@@ -1,9 +1,9 @@
-use garaga::groth16::{Groth16Proof, Groth16ProofRaw, MPCheckHintBN254, MPCheckHintBLS12_381};
-use garaga::definitions::{
-    G1Point, G2Point, E12DMulQuotient, u288, E12D, MillerLoopResultScalingFactor,
-};
 use core::RangeCheck;
 use core::circuit::u384;
+use garaga::definitions::{
+    E12D, E12DMulQuotient, G1Point, G2Point, MillerLoopResultScalingFactor, u288,
+};
+use garaga::groth16::{Groth16Proof, Groth16ProofRaw, MPCheckHintBLS12_381, MPCheckHintBN254};
 
 #[derive(Drop, Serde)]
 pub struct FullProofWithHintsBN254 {

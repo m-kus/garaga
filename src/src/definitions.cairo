@@ -1,10 +1,9 @@
-pub use core::circuit::{u96, u384, CircuitModulus};
-use garaga::basic_field_ops::{neg_mod_p};
+pub use core::circuit::{CircuitModulus, u384, u96};
+use core::num::traits::{One, Zero};
 use core::result::Result;
-use core::serde::{Serde};
-use core::num;
-use core::num::traits::{Zero, One};
-use core::RangeCheck;
+use core::serde::Serde;
+use core::{RangeCheck, num};
+use garaga::basic_field_ops::neg_mod_p;
 
 extern fn downcast<felt252, u96>(x: felt252) -> Option<u96> implicits(RangeCheck) nopanic;
 

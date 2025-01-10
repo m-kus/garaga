@@ -23,6 +23,7 @@ pub enum CurveID {
     SECP256R1 = 3,
     X25519 = 4,
     GRUMPKIN = 5,
+    JUBJUB = 6,
 }
 
 impl TryFrom<u8> for CurveID {
@@ -36,6 +37,7 @@ impl TryFrom<u8> for CurveID {
             3 => Ok(CurveID::SECP256R1),
             4 => Ok(CurveID::X25519),
             5 => Ok(CurveID::GRUMPKIN),
+            6 => Ok(CurveID::JUBJUB),
             _ => Err(format!("Invalid curve ID: {}", value)),
         }
     }
@@ -52,6 +54,7 @@ impl TryFrom<usize> for CurveID {
             3 => Ok(CurveID::SECP256R1),
             4 => Ok(CurveID::X25519),
             5 => Ok(CurveID::GRUMPKIN),
+            6 => Ok(CurveID::JUBJUB),
             _ => Err(format!("Invalid curve ID: {}", value)),
         }
     }
@@ -104,6 +107,17 @@ impl IsModulus<U256> for GrumpkinFieldModulus {
 }
 
 pub type GrumpkinPrimeField = MontgomeryBackendPrimeField<GrumpkinFieldModulus, 4>;
+
+pub const JUBJUB_PRIME_FIELD_ORDER: U256 =
+    U256::from_hex_unchecked("0x73eda753299d7d483339d80809a1d80553bda402fffe5bfeffffffff00000001");
+
+#[derive(Clone, Debug)]
+pub struct JubJubFieldModulus;
+impl IsModulus<U256> for JubJubFieldModulus {
+    const MODULUS: U256 = JUBJUB_PRIME_FIELD_ORDER;
+}
+
+pub type JubJubPrimeField = MontgomeryBackendPrimeField<JubJubFieldModulus, 4>;
 
 pub struct CurveParams<F: IsPrimeField> {
     pub curve_id: CurveID,
@@ -256,6 +270,38 @@ impl CurveParamsProvider<GrumpkinPrimeField> for GrumpkinPrimeField {
             .unwrap(),
             h: 1,
             fp_generator: FieldElement::from(5),
+            irreducible_polys: HashMap::from([]), // Provide appropriate values here
+            loop_counter: &[],                    // Provide appropriate values here
+            nr_a0: 0,                             // Provide appropriate values here
+        }
+    }
+}
+
+impl CurveParamsProvider<JubJubPrimeField> for JubJubPrimeField {
+    fn get_curve_params() -> CurveParams<JubJubPrimeField> {
+        CurveParams {
+            curve_id: CurveID::JUBJUB,
+            a: FieldElement::from_hex_unchecked(
+                "0x739e8acf6e7266e8976220a0378a232820535e745e639334c50d34dcd4c20942",
+            ),
+            b: FieldElement::from_hex_unchecked(
+                "0x6ae5ca3c3f667667f4c60001b55614b0bbf51483ff8366ac7120c33b4c6628e1",
+            ),
+            b20: FieldElement::zero(), // Provide appropriate values here
+            b21: FieldElement::zero(), // Provide appropriate values here
+            g_x: FieldElement::from_hex_unchecked(
+                "0x4ace6c5be1410abd4c147b613b38a4e65c3c3cefd50627cc9c7d2809edadbbcb"
+            ),
+            g_y: FieldElement::from_hex_unchecked(
+                "0x60c90ea806b4993eda65d96da6670461fee090b1357412745ce5305e368eff18",
+            ),
+            n: BigUint::from_str_radix(
+                "e7db4ea6533afa906673b0101343b00a6682093ccc81082d0970e5ed6f72cb7",
+                16,
+            )
+            .unwrap(),
+            h: 8,
+            fp_generator: FieldElement::from(10),
             irreducible_polys: HashMap::from([]), // Provide appropriate values here
             loop_counter: &[],                    // Provide appropriate values here
             nr_a0: 0,                             // Provide appropriate values here
@@ -422,6 +468,7 @@ pub fn get_modulus_from_curve_id(curve_id: CurveID) -> BigUint {
         CurveID::SECP256R1 => biguint_from_hex("0xFFFFFFFF00000001000000000000000000000000FFFFFFFFFFFFFFFFFFFFFFFF"),
         CurveID::X25519 => biguint_from_hex("0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFED"),
         CurveID::GRUMPKIN => biguint_from_hex("0x30644E72E131A029B85045B68181585D2833E84879B9709143E1F593F0000001"),
+        CurveID::JUBJUB => biguint_from_hex("0x73eda753299d7d483339d80809a1d80553bda402fffe5bfeffffffff00000001"),
     }
 }
 

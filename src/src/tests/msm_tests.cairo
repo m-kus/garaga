@@ -1,6 +1,6 @@
 #[cfg(test)]
 mod msm_tests {
-    use garaga::ec_ops::{G1Point, FunctionFelt, u384, msm_g1, MSMHint, DerivePointFromXHint};
+    use garaga::ec_ops::{DerivePointFromXHint, FunctionFelt, G1Point, MSMHint, msm_g1, u384};
 
 
     #[test]
@@ -15550,6 +15550,2593 @@ mod msm_tests {
 
 
     #[test]
+    fn test_msm_JUBJUB_1P() {
+        let scalars_digits_decompositions = Option::None;
+        let msm_hint = MSMHint {
+            Q_low: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            Q_high: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            Q_high_shifted: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            RLCSumDlogDiv: FunctionFelt {
+                a_num: array![
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                a_den: array![
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_num: array![
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_den: array![
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+            },
+        };
+        let derive_point_from_x_hint = DerivePointFromXHint {
+            y_last_attempt: u384 {
+                limb0: 0x375aa1bf38bbb65b4e37cb69,
+                limb1: 0x271148bd80e169f2078c3313,
+                limb2: 0x1381c68e494f3181,
+                limb3: 0x0,
+            },
+            g_rhs_sqrt: array![
+                u384 {
+                    limb0: 0x8d0b9485df9a5f95875770db,
+                    limb1: 0x481662369feec7ac25ab5b49,
+                    limb2: 0x1a5ebb0604449e64,
+                    limb3: 0x0,
+                },
+            ]
+                .span(),
+        };
+        let points = array![
+            G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        ]
+            .span();
+        let scalars = array![u256 { low: 0x0, high: 0x0 }].span();
+
+        let res = msm_g1(
+            scalars_digits_decompositions, msm_hint, derive_point_from_x_hint, points, scalars, 6,
+        );
+        assert!(
+            res == G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        );
+    }
+
+
+    #[test]
+    fn test_msm_JUBJUB_2P() {
+        let scalars_digits_decompositions = Option::None;
+        let msm_hint = MSMHint {
+            Q_low: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            Q_high: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            Q_high_shifted: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            RLCSumDlogDiv: FunctionFelt {
+                a_num: array![
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                a_den: array![
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_num: array![
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_den: array![
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+            },
+        };
+        let derive_point_from_x_hint = DerivePointFromXHint {
+            y_last_attempt: u384 {
+                limb0: 0xcf87d3785e871e79ec22c9c6,
+                limb1: 0xe727358367b576289f43a641,
+                limb2: 0x1337ef5750f1b2cf,
+                limb3: 0x0,
+            },
+            g_rhs_sqrt: array![
+                u384 {
+                    limb0: 0xf4da344a7e70110b671aee89,
+                    limb1: 0xfff97e79598f5b24a4ecce15,
+                    limb2: 0x1d49059164c08f1c,
+                    limb3: 0x0,
+                },
+            ]
+                .span(),
+        };
+        let points = array![
+            G1Point {
+                x: u384 {
+                    limb0: 0x343c227ebd346823a58bd40c,
+                    limb1: 0x1d1ce695f3fa8e148c05356b,
+                    limb2: 0x6f102d3844f75fac,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1a0926a70143b949d3d62912,
+                    limb1: 0x2e2453bab54437660ff59a2c,
+                    limb2: 0x4b7e1471dc5d659e,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        ]
+            .span();
+        let scalars = array![
+            u256 { low: 0x0, high: 0x0 },
+            u256 {
+                low: 0xb4862b21fb97d43588561712e8e5216a, high: 0x259f432e6f4590b9a164106cf6a659e,
+            },
+        ]
+            .span();
+
+        let res = msm_g1(
+            scalars_digits_decompositions, msm_hint, derive_point_from_x_hint, points, scalars, 6,
+        );
+        assert!(
+            res == G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        );
+    }
+
+
+    #[test]
+    fn test_msm_JUBJUB_3P() {
+        let scalars_digits_decompositions = Option::None;
+        let msm_hint = MSMHint {
+            Q_low: G1Point {
+                x: u384 {
+                    limb0: 0x53348913c19b741d0d50d389,
+                    limb1: 0x4dac220f3b0a7798f506a13a,
+                    limb2: 0x23e0e97a0befd198,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x24f34284b45e1e3875e67df8,
+                    limb1: 0x3a017e3e97d13795773aa0f8,
+                    limb2: 0x31b2432419e6e4f2,
+                    limb3: 0x0,
+                },
+            },
+            Q_high: G1Point {
+                x: u384 {
+                    limb0: 0x6a2d578bf23591e5b3895d16,
+                    limb1: 0xbcdf34f90916561a9d352077,
+                    limb2: 0x67d63c38bfe05d06,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x44255a02b5e4a6948157c60f,
+                    limb1: 0x384b21bf0b08a2b30079372b,
+                    limb2: 0x1354dfd3db4a4d4f,
+                    limb3: 0x0,
+                },
+            },
+            Q_high_shifted: G1Point {
+                x: u384 {
+                    limb0: 0x3263665fa62dad942ffc7824,
+                    limb1: 0xa3fc7a70c1c6cd84bd35a3c3,
+                    limb2: 0x3fe2146677358630,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x5d33cf98744f1519165e9832,
+                    limb1: 0x190ad25108ed1898139d0c84,
+                    limb2: 0x66e0384605ee689e,
+                    limb3: 0x0,
+                },
+            },
+            RLCSumDlogDiv: FunctionFelt {
+                a_num: array![
+                    u384 {
+                        limb0: 0x7fe3fdb3310e06f9ece3b045,
+                        limb1: 0xf6ee78ee8e7cfea57b2414e8,
+                        limb2: 0x1fe056e4bee279be,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x4b5651a77283ad5f86707c67,
+                        limb1: 0xbd042d6091fad68e13f8db77,
+                        limb2: 0x296854acbef0b9a0,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xec742c5f8d5b3c3998ed0fbc,
+                        limb1: 0xe5838c3588cdb394839f98aa,
+                        limb2: 0x2cececd1b66f211d,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xdd56ea10139e2516ec494d95,
+                        limb1: 0x8a31e9f073df1519b9f621bd,
+                        limb2: 0x38b3bf7bc1ef78c4,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                a_den: array![
+                    u384 {
+                        limb0: 0x977e4bc5260348a69178d99e,
+                        limb1: 0x2e6f0b2965f81dba0581d257,
+                        limb2: 0x614671c6c03feb3a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x8a51a80da7cf7dd7dc6543b2,
+                        limb1: 0x635417e685513308df23cef9,
+                        limb2: 0x620fc4b3a149ebe3,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x80a50abd1f108a8b58b675c0,
+                        limb1: 0xde5ed02e5f7cb1e3eda1cd0a,
+                        limb2: 0x37f042f97529c7dc,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x9fb2f30b49b05c88a6daa7b5,
+                        limb1: 0xfdd93ab445985999cf4deb07,
+                        limb2: 0xd9596ed857b3a1d,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_num: array![
+                    u384 {
+                        limb0: 0xab18aeae7988d8ee77e52ac9,
+                        limb1: 0x3309e49939464ab0f59b6e3b,
+                        limb2: 0x128cb10a8f82994d,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x31ff21abdbd16c63a4e5c331,
+                        limb1: 0x66c028ef156b8bdf64f5ac40,
+                        limb2: 0x5e00514809f5c525,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x22a8d6cd343b21891e857f4a,
+                        limb1: 0x6630e7a42670029a800f7969,
+                        limb2: 0x3b9a8e3061a5e738,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x807be4527512d67234ff887f,
+                        limb1: 0x5757f7413bb149bdab1a033f,
+                        limb2: 0x38be9dbca00eec6f,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x5143d62cef0eb760ab0feecd,
+                        limb1: 0xd8e211d36fd77e17b6abe489,
+                        limb2: 0x3fc7476d73ab7439,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_den: array![
+                    u384 {
+                        limb0: 0x43daaaaf4440c8dd25db7274,
+                        limb1: 0xb863b2cc4f46e61e1d67ce6d,
+                        limb2: 0x701557677ae84750,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xcd455ccc13ee0b508601a2ec,
+                        limb1: 0xd509edef5da01fbc60b51e6a,
+                        limb2: 0x5e80aad3ae6d9a7a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xa56d91e69a42eaf64eb01453,
+                        limb1: 0xca9983beecaca6f36e9dfda5,
+                        limb2: 0x603b52db565cab69,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xc3983edac39f15fcefca7669,
+                        limb1: 0xf755f53c8a2190e99c34d00d,
+                        limb2: 0x2030bf1e9bed99ca,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xa1a0b33cd7d9a51536f4037b,
+                        limb1: 0x140aace68aea45acaf6fb930,
+                        limb2: 0x26ad05643521e93a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xdf0a41f2e41dbf692d787f01,
+                        limb1: 0x428718c68d64fd06ba37877b,
+                        limb2: 0x37a12675b9feb17d,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x9fb2f30b49b05c88a6daa7b5,
+                        limb1: 0xfdd93ab445985999cf4deb07,
+                        limb2: 0xd9596ed857b3a1d,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+            },
+        };
+        let derive_point_from_x_hint = DerivePointFromXHint {
+            y_last_attempt: u384 {
+                limb0: 0x9a96f200cacb57344e2f9ff5,
+                limb1: 0xdbec078d15b524a1fb1807ff,
+                limb2: 0xcf8a6e68523c171,
+                limb3: 0x0,
+            },
+            g_rhs_sqrt: array![].span(),
+        };
+        let points = array![
+            G1Point {
+                x: u384 {
+                    limb0: 0x343c227ebd346823a58bd40c,
+                    limb1: 0x1d1ce695f3fa8e148c05356b,
+                    limb2: 0x6f102d3844f75fac,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1a0926a70143b949d3d62912,
+                    limb1: 0x2e2453bab54437660ff59a2c,
+                    limb2: 0x4b7e1471dc5d659e,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x70847df35c50efde684eaf8a,
+                    limb1: 0xba12a3e2c7c3bb3888bbf789,
+                    limb2: 0xeac7d9f8aba0ba2,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x69fc584e4dbb7791d3c4e6c4,
+                    limb1: 0x76fad315529a930b896a244d,
+                    limb2: 0x5b85acfaab406d4a,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        ]
+            .span();
+        let scalars = array![
+            u256 { low: 0x0, high: 0x0 },
+            u256 {
+                low: 0x12e0c8b2bad640fb19488dec4f65d4d9, high: 0x5487ce1af19922ad9b8a714e61a441c,
+            },
+            u256 {
+                low: 0x5a92118719c78df48f4ff31e78de5857, high: 0xa3f2c9b9c6316b950f244556f25e2a2,
+            },
+        ]
+            .span();
+
+        let res = msm_g1(
+            scalars_digits_decompositions, msm_hint, derive_point_from_x_hint, points, scalars, 6,
+        );
+        assert!(
+            res == G1Point {
+                x: u384 {
+                    limb0: 0x9df17ee0fc495d3d9a67803a,
+                    limb1: 0x7588bd9043ebc123d73153c0,
+                    limb2: 0x931e07968c5d891,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xd1989be7d679ff7d3e370f20,
+                    limb1: 0xd13e1f3af8f3c0ff23f52ae9,
+                    limb2: 0x490a4e861a0b4c06,
+                    limb3: 0x0,
+                },
+            },
+        );
+    }
+
+
+    #[test]
+    fn test_msm_JUBJUB_4P() {
+        let scalars_digits_decompositions = Option::None;
+        let msm_hint = MSMHint {
+            Q_low: G1Point {
+                x: u384 {
+                    limb0: 0xaa1a5b215654abb261a04aab,
+                    limb1: 0x51db073ee634826e46eea881,
+                    limb2: 0x2774dacf2b10f90e,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xdfd55f4257a8210c087426d3,
+                    limb1: 0xbd0fd31f36a67f1fefeb0c7e,
+                    limb2: 0x3717e6deb8ccdbf3,
+                    limb3: 0x0,
+                },
+            },
+            Q_high: G1Point {
+                x: u384 {
+                    limb0: 0x1d5ad7a6997d18509523db75,
+                    limb1: 0x7c32778bb855fd4a480f63eb,
+                    limb2: 0x1bcf3fc40e0fda69,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1683e086952b13d53c46493b,
+                    limb1: 0xaa0f8728084cc332bd27c38b,
+                    limb2: 0x2f795cfa0e2be98f,
+                    limb3: 0x0,
+                },
+            },
+            Q_high_shifted: G1Point {
+                x: u384 {
+                    limb0: 0x80bf06b5f0b84a6536368803,
+                    limb1: 0x7693544f3839d2eb79396c42,
+                    limb2: 0x1b5cbcae32062d0c,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x50f14406b611ea6c55233fd0,
+                    limb1: 0x1e917957c15bb4050d1da19a,
+                    limb2: 0x677cc668054584e,
+                    limb3: 0x0,
+                },
+            },
+            RLCSumDlogDiv: FunctionFelt {
+                a_num: array![
+                    u384 {
+                        limb0: 0x1f6b7622c1334892eff90dd3,
+                        limb1: 0x851840edce46b065ec20db27,
+                        limb2: 0x43fe3471a207aceb,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xf520e423dac23c40db4176c1,
+                        limb1: 0xb9f8c938e9e2b7f768f5101c,
+                        limb2: 0x42bef45d9002604b,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x2caa3c3b7b8ddeb1c9de1d58,
+                        limb1: 0xbc58cfa2a1dddd10c14c0b73,
+                        limb2: 0x2392812ac6bebb5c,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x7b2bdadfb9a093bb49435d70,
+                        limb1: 0x1289cd19d47458bef3a52af0,
+                        limb2: 0x2ba8f5b9a53aa1c4,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x742c1a9573714b4af5dd7bb7,
+                        limb1: 0x34131151871d2f390b81e66f,
+                        limb2: 0x32aa3a94a0d1b771,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                a_den: array![
+                    u384 {
+                        limb0: 0xc6c2a4a520cba70c1c4557c6,
+                        limb1: 0x4c9f19536a8d03ac79ae3567,
+                        limb2: 0x47eb9e2319c34635,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd342d85e4bd3b997531dc7e1,
+                        limb1: 0x96d2a15c8e8344976226466b,
+                        limb2: 0x31841cf74d3639fb,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x43e8d174cdff8bcd2d4cc479,
+                        limb1: 0x60c7bfc5e467b160e716cc59,
+                        limb2: 0x43097e1f0ce71921,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd77de66130c6d64020fc71cb,
+                        limb1: 0xd992c8dcb274385315d9a296,
+                        limb2: 0x32d8589993bb04a1,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xad10a34e111e39063d12e3d5,
+                        limb1: 0xf14d4ab2db5bd9b29ad2ce26,
+                        limb2: 0x278652af8af13d64,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_num: array![
+                    u384 {
+                        limb0: 0x48d2beb7d77bf39af58936af,
+                        limb1: 0xa73245589b924e7276a9d443,
+                        limb2: 0x59c41e066b6341c4,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xacd1086407df02460f466d8d,
+                        limb1: 0x5add6c8ae1237440f1837dcf,
+                        limb2: 0x45ded4f68f16f9ac,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd293d73afba3982da206effd,
+                        limb1: 0x6a78fbcc50d102ef28091d87,
+                        limb2: 0x13dda27a92a0f861,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xadab022c36d75d3792a7f2de,
+                        limb1: 0xdd84f8b14aa1e59459c2c13,
+                        limb2: 0x3e00b201cc9c9369,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x1ff6139bfee8d7188f42f1c6,
+                        limb1: 0xd98cd09e103168efa4f7a92,
+                        limb2: 0x3a88153b528ee4bb,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x14d823ee21f2a015b0e54845,
+                        limb1: 0x151b64ca288f7b2d6387c9f1,
+                        limb2: 0x1192952ece86c9fc,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_den: array![
+                    u384 {
+                        limb0: 0xe1c41eabee3b6992bb231ce2,
+                        limb1: 0x69766f79cc075080d8cf8a41,
+                        limb2: 0x3fa677d70062e9ac,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xe445de4734988b7df248f20f,
+                        limb1: 0xc85fca89a50e5482c21eaa97,
+                        limb2: 0x2c21a7c968a0d9e2,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x209f000e3eea256b055ed8e8,
+                        limb1: 0x188874358b417d04c0f7c8e5,
+                        limb2: 0x1facd1195cc80804,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x561ee4587d38417ba160350b,
+                        limb1: 0x6c28dbf8fe7fdc03a9c0c327,
+                        limb2: 0x6e05be4c0c207adf,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xb4850365af79d3fb4f739188,
+                        limb1: 0xd6d3cf5a55621ff1404442b7,
+                        limb2: 0xda97f7cecf2a8f8,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xe0a07dcbf7a5c2865d967188,
+                        limb1: 0xf50abcb3a611ce132beade99,
+                        limb2: 0x427e90f5183916a2,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x35e31d96f5d40b1df5be7b0c,
+                        limb1: 0x3dbb1174e05c8375e26f5d08,
+                        limb2: 0x32893c15d88fee42,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xad10a34e111e39063d12e3d5,
+                        limb1: 0xf14d4ab2db5bd9b29ad2ce26,
+                        limb2: 0x278652af8af13d64,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+            },
+        };
+        let derive_point_from_x_hint = DerivePointFromXHint {
+            y_last_attempt: u384 {
+                limb0: 0x3a5ef6e0c7656dc9375d02ed,
+                limb1: 0x5e8baf6764014b37eb0f64bf,
+                limb2: 0x9f4961a9d40365a,
+                limb3: 0x0,
+            },
+            g_rhs_sqrt: array![
+                u384 {
+                    limb0: 0x4be46620b622ed281533960a,
+                    limb1: 0x3f38fc275f319d826772b9a8,
+                    limb2: 0x325686768fc9694a,
+                    limb3: 0x0,
+                },
+            ]
+                .span(),
+        };
+        let points = array![
+            G1Point {
+                x: u384 {
+                    limb0: 0x343c227ebd346823a58bd40c,
+                    limb1: 0x1d1ce695f3fa8e148c05356b,
+                    limb2: 0x6f102d3844f75fac,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1a0926a70143b949d3d62912,
+                    limb1: 0x2e2453bab54437660ff59a2c,
+                    limb2: 0x4b7e1471dc5d659e,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x70847df35c50efde684eaf8a,
+                    limb1: 0xba12a3e2c7c3bb3888bbf789,
+                    limb2: 0xeac7d9f8aba0ba2,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x69fc584e4dbb7791d3c4e6c4,
+                    limb1: 0x76fad315529a930b896a244d,
+                    limb2: 0x5b85acfaab406d4a,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x9a335d3eb206c8b12da3be80,
+                    limb1: 0x7672ee60995fc87b7bb509a6,
+                    limb2: 0x5307a715d268b104,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x488d6e7bb40ae2738f65b0bf,
+                    limb1: 0xdd22b3786019d60332e89aa0,
+                    limb2: 0x4cba7fd0544bb259,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        ]
+            .span();
+        let scalars = array![
+            u256 { low: 0x0, high: 0x0 },
+            u256 {
+                low: 0x5a92118719c78df48f4ff31e78de5857, high: 0xa3f2c9b9c6316b950f244556f25e2a2,
+            },
+            u256 {
+                low: 0x8d723104f77383c13458a748e9bb17bc, high: 0x85776e9dd84f39e71545a137a1d5006,
+            },
+            u256 {
+                low: 0xeb2083e6ce164dba0ff18e0242af9fc3, high: 0x17e0aa303983ca8ea7e9d498c778ea6,
+            },
+        ]
+            .span();
+
+        let res = msm_g1(
+            scalars_digits_decompositions, msm_hint, derive_point_from_x_hint, points, scalars, 6,
+        );
+        assert!(
+            res == G1Point {
+                x: u384 {
+                    limb0: 0xc390a3117b27879bf1a15b45,
+                    limb1: 0x4821a3bc31ec2453aec8c9cc,
+                    limb2: 0x3d812f91f6087145,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x8240d3170c5de10831ff5720,
+                    limb1: 0xcababab0170b73aaed300e73,
+                    limb2: 0x29f65c7910b89189,
+                    limb3: 0x0,
+                },
+            },
+        );
+    }
+
+
+    #[test]
+    fn test_msm_JUBJUB_10P() {
+        let scalars_digits_decompositions = Option::None;
+        let msm_hint = MSMHint {
+            Q_low: G1Point {
+                x: u384 {
+                    limb0: 0x48d21a4ca7a551f847d42219,
+                    limb1: 0xa8e1deaf8e49ca9c684167df,
+                    limb2: 0x41e979e4e1b6b91,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xa4d78d51c4aebd6394767af4,
+                    limb1: 0x41b9d1ef50859058e6b65eb6,
+                    limb2: 0x688fd3655aa2eef4,
+                    limb3: 0x0,
+                },
+            },
+            Q_high: G1Point {
+                x: u384 {
+                    limb0: 0x9105efb026d2fd96b3429332,
+                    limb1: 0xc2222adb658116b602040ac7,
+                    limb2: 0x6fa1fdea4be68b83,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x322d01c6ccb0cd8b4ae9a8fd,
+                    limb1: 0xce2170f3b918502bebb664aa,
+                    limb2: 0xd27386d5a0b923f,
+                    limb3: 0x0,
+                },
+            },
+            Q_high_shifted: G1Point {
+                x: u384 {
+                    limb0: 0xe230110a94861bd3f5eac6d4,
+                    limb1: 0x5644f9d7a345f2b88d26afd9,
+                    limb2: 0x1d18b5cd9ab63d97,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x379ce239d0b1938736376ab6,
+                    limb1: 0x62da6b8b89c230e70c088070,
+                    limb2: 0x6b019dcbb0bd7ac0,
+                    limb3: 0x0,
+                },
+            },
+            RLCSumDlogDiv: FunctionFelt {
+                a_num: array![
+                    u384 {
+                        limb0: 0xf1fac8836d63e0f78ac039c1,
+                        limb1: 0xe95c4cfb49034d1900c41a56,
+                        limb2: 0x117a82abd27b49d5,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xb8de8970ee4933ac6a4cbf46,
+                        limb1: 0x33c7252c9ad5ec04bcf9fc12,
+                        limb2: 0x5a7d741051acb37a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x43418036081bdccd77c007c0,
+                        limb1: 0x3172afe33609afcb4034ac27,
+                        limb2: 0x66c63e71950374ca,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x5913182f07d8de98fa4d1f4b,
+                        limb1: 0x79a9136ef672dff4d9fbd480,
+                        limb2: 0x180591288bc1ccfe,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x11f6389f1520f6c2dd8b4ab3,
+                        limb1: 0x5b371f1750f1e4d4d809221e,
+                        limb2: 0x6ce319aaa2286341,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xece57e95d084ff5ea5981b8f,
+                        limb1: 0xcdbcfe61230f2c6e10d9e487,
+                        limb2: 0x1238a59a207b465c,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xf12407780e8466adc1c349a3,
+                        limb1: 0xbaa4a524b4fe0dfc9768a81d,
+                        limb2: 0x4d64132db92c50f0,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd10f5a0d25d610c5dad2359e,
+                        limb1: 0xe3a7a9739ea3c8e0aa1ee17d,
+                        limb2: 0x21cd152d2f0ef359,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x4e7f96d1220870d9080bb79d,
+                        limb1: 0x2c851babb0a728c7849b146a,
+                        limb2: 0x48c1af521873dd73,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xfaf73b01f70a9909056de4a4,
+                        limb1: 0x93e38165dff99e5a876a1a1c,
+                        limb2: 0x59454004053d8bf4,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x9e98a47cace518470b7a8fc3,
+                        limb1: 0x4d3b3caa1d6e4261b394cfc6,
+                        limb2: 0xacf08ca0a5082e6,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                a_den: array![
+                    u384 {
+                        limb0: 0x2cd8edeaa41944662a1cff20,
+                        limb1: 0x2a9c1f1451cb0ee08f8c4581,
+                        limb2: 0xeb6205494513f1,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x3dbf7289ff60e99f57d71d45,
+                        limb1: 0x5caa87800453b025adeeba6b,
+                        limb2: 0x6b655b01b18b9289,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x6ba77f1860d69ffb3a2c61a4,
+                        limb1: 0xd029e6110bbcbb4b81fe487c,
+                        limb2: 0x62bf9b39c6b074dd,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x3d8f6ff33df81ae012b5218b,
+                        limb1: 0xb9c5456dd9778ede29ce5e97,
+                        limb2: 0x3a2ea52d1362f5b3,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xc3c3da2397ccea05fbe3479f,
+                        limb1: 0x70600dbd1e86ea3b7815f574,
+                        limb2: 0x5fa1889667b19f51,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x8ea8872020bd591c6e3dbbfc,
+                        limb1: 0xa46e1cf92d4edf5bf487bdce,
+                        limb2: 0x1beb2731fa5bceea,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x3cca00c00e5a2c9817795896,
+                        limb1: 0x73d97cc0e31c59065ed9a1a6,
+                        limb2: 0x27b02629f3998788,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xb40df16e9c1f1dde696a9767,
+                        limb1: 0x98f94cb20d72381bfacb40bb,
+                        limb2: 0x2a382b8066a96de5,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x6ad34091acf92cf002839fd9,
+                        limb1: 0x250f6d039758590c88059894,
+                        limb2: 0x1b69da84ace11cd6,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd676310743883a0d1096ee39,
+                        limb1: 0x97596f6024f741927650fa03,
+                        limb2: 0x45ef919b6e37056f,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x3c18ce5e69a11a5199e39918,
+                        limb1: 0x145837ecd0cefa1ddf9318f5,
+                        limb2: 0x84090b611cbdd40,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_num: array![
+                    u384 {
+                        limb0: 0x9614e56588858d258f01d59a,
+                        limb1: 0x29be03f44a27df88cc15d6a,
+                        limb2: 0x2473eec03d83a0e2,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xaaf5e68787176f1171c8f1aa,
+                        limb1: 0x828c1d2b5621f5f9d70912f2,
+                        limb2: 0x70c6a2b402bed601,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x6422dbe25bd5f322fa362f86,
+                        limb1: 0x9ca10d54de9ad90287584d69,
+                        limb2: 0x368d2017ca6cb321,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x84c04293efc30ba94e5dab3c,
+                        limb1: 0xf386c5e06ee02909691354f5,
+                        limb2: 0xa59930ccace4379,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x24a38d1cfab8aac6c4ae4281,
+                        limb1: 0xd0dd3e5c7ed3f40ed3076ea9,
+                        limb2: 0x41d8869d66bf2398,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x3336b338098fdaa0697e426c,
+                        limb1: 0xfb30a752bc0189b07a15fb43,
+                        limb2: 0x2c4421ef048b6b36,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x6c002a6ab439ec768a5f0a8e,
+                        limb1: 0xbc05fa0ecda63279f68a1b1c,
+                        limb2: 0x566a1574cecb4410,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xacc666a6d708c53cbf32a821,
+                        limb1: 0x9f811d6fc2e0963ee8f61e14,
+                        limb2: 0x37605b7aa25b9aa0,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x5bba0dec2effdf180fb37cd4,
+                        limb1: 0x18b43327edccf6df116af9cf,
+                        limb2: 0x3266c1cdb028c5a9,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x3a41b860b63218d738ff46d3,
+                        limb1: 0x4e6ab1eef416240303d2b280,
+                        limb2: 0x682675f8037d89c,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xde8ff25870671d4b2120c38d,
+                        limb1: 0x1f73a13318cb101ca3aeaee,
+                        limb2: 0x2eba5c13959c23cc,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x72c43889ee7ea81154b0fa08,
+                        limb1: 0x90b032b924506d143122297d,
+                        limb2: 0x3057adc2f8d2b150,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_den: array![
+                    u384 {
+                        limb0: 0x76f811420b41642b968f320c,
+                        limb1: 0x46af85b48cb9f98e5a1461e5,
+                        limb2: 0x1934ef0efb304aea,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x8b519bb5cb5aa4f00808d5e4,
+                        limb1: 0x9870fe6ff3233a220ee1934e,
+                        limb2: 0x301f126b6fb5b0e2,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x2fdf9d5e9508c3b7b94bada1,
+                        limb1: 0xc16c0b52bc53c60630cad3f3,
+                        limb2: 0x143d157568019b0,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x1bf49703b754eb5d4092200,
+                        limb1: 0xd2a916ca059d09873046f5ab,
+                        limb2: 0x54a1c6a29d289a02,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x1a0e662c6e830dfe7319ca1,
+                        limb1: 0xc227a331ec5d4554da34da9b,
+                        limb2: 0x5cdb3505f487d5f9,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xf629178c78c364355038be28,
+                        limb1: 0xd2364112559415cc7cd16cfe,
+                        limb2: 0xc3f80ccb9c8cc4,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xcbb3d6a504c16bcc60f90ca6,
+                        limb1: 0xd39d4c183e9fab1f7c5fc200,
+                        limb2: 0x625fb671ede09eac,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x58b8c2f546cb07b274728099,
+                        limb1: 0x66c3cc311e96554e3e318be1,
+                        limb2: 0x299306b583e2d9b1,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x5eae91df741c8536630693c,
+                        limb1: 0xdba9c6f4bc220f2944bd4afa,
+                        limb2: 0x46319edeb7e38e40,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xec48b858088537ea601b8906,
+                        limb1: 0xc156ebebc973d76749653c6a,
+                        limb2: 0x2b201f6ed75c1047,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x78f26eaef52fd7901c65f644,
+                        limb1: 0x950607e323f14cbea20ae755,
+                        limb2: 0x45906715ffaff7bf,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x303e690d522b9e4af6425986,
+                        limb1: 0x3c73419db8b954726a7669bb,
+                        limb2: 0x164b21d32feb8c3a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x34db683d08956eeae558f77a,
+                        limb1: 0xfb81b7f852df8cb542e6b475,
+                        limb2: 0x45a07517b30bef0f,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x3c18ce5e69a11a5199e39918,
+                        limb1: 0x145837ecd0cefa1ddf9318f5,
+                        limb2: 0x84090b611cbdd40,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+            },
+        };
+        let derive_point_from_x_hint = DerivePointFromXHint {
+            y_last_attempt: u384 {
+                limb0: 0x6a0e615f2155589ebb507624,
+                limb1: 0x5db3498943ca06d9291850c7,
+                limb2: 0x33bc532b57a6d502,
+                limb3: 0x0,
+            },
+            g_rhs_sqrt: array![].span(),
+        };
+        let points = array![
+            G1Point {
+                x: u384 {
+                    limb0: 0x343c227ebd346823a58bd40c,
+                    limb1: 0x1d1ce695f3fa8e148c05356b,
+                    limb2: 0x6f102d3844f75fac,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1a0926a70143b949d3d62912,
+                    limb1: 0x2e2453bab54437660ff59a2c,
+                    limb2: 0x4b7e1471dc5d659e,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x70847df35c50efde684eaf8a,
+                    limb1: 0xba12a3e2c7c3bb3888bbf789,
+                    limb2: 0xeac7d9f8aba0ba2,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x69fc584e4dbb7791d3c4e6c4,
+                    limb1: 0x76fad315529a930b896a244d,
+                    limb2: 0x5b85acfaab406d4a,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x9a335d3eb206c8b12da3be80,
+                    limb1: 0x7672ee60995fc87b7bb509a6,
+                    limb2: 0x5307a715d268b104,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x488d6e7bb40ae2738f65b0bf,
+                    limb1: 0xdd22b3786019d60332e89aa0,
+                    limb2: 0x4cba7fd0544bb259,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x183fc457fc9abafd9234b5f6,
+                    limb1: 0xedcca34fb75cf29b9c8fdba0,
+                    limb2: 0x595e009565926d04,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xbe824606b96d1f332311c1d6,
+                    limb1: 0x6a60658be784992575d1a840,
+                    limb2: 0x1d0ff38dbd33d21a,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0xe2ff6097d5fbfe9df375018a,
+                    limb1: 0x4841e9fcb2b772379fcd46b8,
+                    limb2: 0x5fec86ec670cd255,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x4aff42433ee32c4089fd7947,
+                    limb1: 0x7b5365752eac90423f71459,
+                    limb2: 0x38c450f649330823,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x4c57b74f33fb9a67e2940d21,
+                    limb1: 0xe3c5437ccb739f8596309dc0,
+                    limb2: 0x25d44f0d463db064,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x4c76bee711c67c78b123a699,
+                    limb1: 0x5dbade531096a023ef80a0e9,
+                    limb2: 0x3740dc661d8f8a65,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x9f5bd89890a65479891539d6,
+                    limb1: 0x9bf1b7febdcd85336bad7a77,
+                    limb2: 0xe46074904751eb,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xb44da682705fd4b974134d1f,
+                    limb1: 0x62d49f513c35513331e003c1,
+                    limb2: 0x65e3571738f4c496,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x6dd88e70e64556d5f6758643,
+                    limb1: 0x92eb998d09f6b5f38ab15351,
+                    limb2: 0x288047018f365160,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1b98098103a26ad8f6426a8a,
+                    limb1: 0x672ed1f15ebcf0eb5e12e783,
+                    limb2: 0x192a5d395b2d41be,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0xa853c41aa78ac263f75ff80a,
+                    limb1: 0xb149484069d9a6bdfe576986,
+                    limb2: 0x4052c5d8fa1210c9,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x2533d5501190f7b510597fe8,
+                    limb1: 0xc8c35ba5b738c814f0f819ee,
+                    limb2: 0x3e79e43ea12f11b7,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        ]
+            .span();
+        let scalars = array![
+            u256 { low: 0x0, high: 0x0 },
+            u256 {
+                low: 0x247a8333f7b0b7d2cda8056c3d15eef7, high: 0x1759edc72ae22448b0163c1cd9d2b7d,
+            },
+            u256 {
+                low: 0xe005b86051ef1922fe43c49e149818d1, high: 0x7d41e60eece328bff7b118e820865d6,
+            },
+            u256 {
+                low: 0x4a84eb038d1fd9b74d2b9deb1beb3711, high: 0x552f2338c25166a1ff39849b4e1357d,
+            },
+            u256 {
+                low: 0x3405095c8a5006c1ec188efbd080e66e, high: 0x8c1745a9a6a5f92cca74147f6be1f72,
+            },
+            u256 {
+                low: 0x1775336d71eacd0549a3e80e966e1277, high: 0x5129fb76288e1a5cc45782198a6416d,
+            },
+            u256 {
+                low: 0x2f1205544a5308cc3dfabc08935ddd72, high: 0x870e152fcd81b5d24bace4307bf326,
+            },
+            u256 {
+                low: 0x42930b33a81ad477fb3675b89cdeb3e6, high: 0xadc0da716febaa011af923d79fdef7c,
+            },
+            u256 {
+                low: 0x2648ee38e07405eb215663abc1f254b8, high: 0x148b275d7ab792809e469e6ec62b2c8,
+            },
+            u256 {
+                low: 0xd450fe4aec4f217bb306d1a8e5eeac76, high: 0xd67e55f642bfa42aef9c00b8a64c1b9,
+            },
+        ]
+            .span();
+
+        let res = msm_g1(
+            scalars_digits_decompositions, msm_hint, derive_point_from_x_hint, points, scalars, 6,
+        );
+        assert!(
+            res == G1Point {
+                x: u384 {
+                    limb0: 0xe4b533df81296aca626bc7bf,
+                    limb1: 0xbbacf40706624c0999657402,
+                    limb2: 0x86788465469736c,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xc211b1f6c58ecf9d3b8b24b2,
+                    limb1: 0xa8999aeff4f068a4347cc588,
+                    limb2: 0x461c241d24584260,
+                    limb3: 0x0,
+                },
+            },
+        );
+    }
+
+
+    #[test]
+    fn test_msm_JUBJUB_11P() {
+        let scalars_digits_decompositions = Option::None;
+        let msm_hint = MSMHint {
+            Q_low: G1Point {
+                x: u384 {
+                    limb0: 0x150415d8702a09f959d42e80,
+                    limb1: 0x27587a0dbb807b5d538031c3,
+                    limb2: 0x6f362e1cdc630219,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x5257cce6d1d098559c07ba96,
+                    limb1: 0x888c6ea34d94db49790401fe,
+                    limb2: 0x6dcd64b374171b3e,
+                    limb3: 0x0,
+                },
+            },
+            Q_high: G1Point {
+                x: u384 {
+                    limb0: 0xbc877395f6a0ef6f8cd25b1d,
+                    limb1: 0x948f2f5ab91f3c450103b8a9,
+                    limb2: 0x467596139ed41c58,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xe5c8d7c831aeb002f0d5f944,
+                    limb1: 0xa5e4b67dcbb922792f6fdea1,
+                    limb2: 0x30c5adb074ea251b,
+                    limb3: 0x0,
+                },
+            },
+            Q_high_shifted: G1Point {
+                x: u384 {
+                    limb0: 0xcd201f1501a4322f25fa9665,
+                    limb1: 0x4aa99a2cfa30c860cc2677a8,
+                    limb2: 0x433ac3c7c4c03d9a,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x8bc2753b2c661febb72ed2c4,
+                    limb1: 0x5ff24cce3d1ab0efcac4d5a2,
+                    limb2: 0x44b397dc64e9fb1a,
+                    limb3: 0x0,
+                },
+            },
+            RLCSumDlogDiv: FunctionFelt {
+                a_num: array![
+                    u384 {
+                        limb0: 0x55181b1660ba8b41f454e1ed,
+                        limb1: 0x7e4f8722533c7643740382ed,
+                        limb2: 0x1d4dfeda2d58cc09,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xa9736c76aebd3f5e17a311fa,
+                        limb1: 0xf4ab490f8cdfa709ac971d66,
+                        limb2: 0x1b572ca854822a38,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xc148cbca09b274fc0162e867,
+                        limb1: 0x9970c00ba4a447cd90714d45,
+                        limb2: 0x4c6a8e3f143643fc,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x78765d01f71542de0e5f0ff2,
+                        limb1: 0x7cfe647c70a60afe3ec43713,
+                        limb2: 0x2f0728152d8c9d87,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x5d42ed27546364b94741fb3c,
+                        limb1: 0x8129cbad2113fa235e64a4fb,
+                        limb2: 0x65ded0b024999d33,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x228e4aedb8f9491d68f3971e,
+                        limb1: 0xf211c1b40e7773c9293e76a8,
+                        limb2: 0x541601499a549f70,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x9958b02952f4ebdec25cbc2c,
+                        limb1: 0x90bb65f6c51d0d577f236a1,
+                        limb2: 0x1d6c9848a5b8d589,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xc6292a437bbaf0f50a0800df,
+                        limb1: 0x46cd0134aa981b97d774bfca,
+                        limb2: 0x4c60e574e95568eb,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xf7c410c3259bbf42a1443478,
+                        limb1: 0xc09292f5a0207437928aa0af,
+                        limb2: 0x5e6561468402fc51,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x7cbe11a1b81ea22442f1ddbc,
+                        limb1: 0xbf1bac3ed7780f4981839a90,
+                        limb2: 0x5d1ba4e843d870fa,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xe11a67998135c4662877f207,
+                        limb1: 0xa3b9272dec6e10fb1906e85e,
+                        limb2: 0x4d332caf85aac4b3,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xe62b2e5104411bbabade02be,
+                        limb1: 0x99c99535dad2e84265b3fc31,
+                        limb2: 0x23fa4f9ead390a05,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                a_den: array![
+                    u384 {
+                        limb0: 0xb1d7d344384b91b27adfc7f1,
+                        limb1: 0x1e978578a4aff245742e0467,
+                        limb2: 0x359a1f239b35fc9d,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xecfc1206435f1480551a518e,
+                        limb1: 0x5470c919e1479aada14bdaf1,
+                        limb2: 0x726bb079127eca9a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x540486078cded4af8f170ac1,
+                        limb1: 0x47e4fbee1d0cefb32bcd1036,
+                        limb2: 0x75c0459954e146,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd9f1b6621e4ecec8c97fa264,
+                        limb1: 0x6fc4f3f41e10f327b20e363e,
+                        limb2: 0x705cdf02da64905c,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x8c993e093691c334d803a38c,
+                        limb1: 0x96c266ff232fe03b05d8a4ec,
+                        limb2: 0x12ca4608e61705c8,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x9ef025153cef50995e5cd50c,
+                        limb1: 0x29a5155b2f5bec2507e1b16d,
+                        limb2: 0x6850d0212ca92426,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd0227efa87fed4d760e0b72f,
+                        limb1: 0x4f8087743a5cd713224de6e5,
+                        limb2: 0x18f1c3d810c9fc80,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd81e855de2963dac9f9fbe12,
+                        limb1: 0x2d0b5596f5e8cd9a92f40d31,
+                        limb2: 0x5696197076ae0661,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x4ca053c155bd2a8b111cf5c2,
+                        limb1: 0x6be032c1080a456e63ed26f4,
+                        limb2: 0x1c74dacd50481855,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x75903f7aa86e2a6675e7191c,
+                        limb1: 0x4209cb5566ac6a3c670e7f48,
+                        limb2: 0x3ebefd577fe62087,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x9247c8d86650e1413200d30d,
+                        limb1: 0x5bf513307a8e28a1f2907102,
+                        limb2: 0x5313e464dbcece22,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x26df0e4e6314543a0b329c3d,
+                        limb1: 0x7abd00d3db02eef75fee54bd,
+                        limb2: 0x3bcd3b72d949503d,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_num: array![
+                    u384 {
+                        limb0: 0x3b71b8f369f3855415132197,
+                        limb1: 0x2c65257f1268cda2bc1e4555,
+                        limb2: 0x3b2a24fd7d574c95,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x960858ead7d67cd63e8d9a9e,
+                        limb1: 0x8c76d764c70d9bda4dbfe340,
+                        limb2: 0x2bf289b1c9e37ebb,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xaa99e004b3b735f288d10440,
+                        limb1: 0xd376ab894b7a5c978f871de6,
+                        limb2: 0x1e2169139fa7eef6,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x80deef80983d23a5b553c9bb,
+                        limb1: 0x369f5eaa076fb543f15dea62,
+                        limb2: 0x7261d66cbc6230a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xb24ac24c3a932337171be802,
+                        limb1: 0x41fc2e3e425e7dba164c01d1,
+                        limb2: 0x2757dd86982798d9,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x100293885d8e6daee202ae19,
+                        limb1: 0x835766d49e641755d3cb6d1,
+                        limb2: 0x5b31fdf15ce15ad0,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x66669bd6b7fa39076e24224,
+                        limb1: 0xec82f8c6af83fc018c6ecc21,
+                        limb2: 0x410eb20ca10a25d2,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x7049dc782938876968658b,
+                        limb1: 0xcc58f80f50fb1fca99e84ec1,
+                        limb2: 0x488c75643a09b917,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x5aa704014bac55826577ecc,
+                        limb1: 0x18df6d61d201df2b59541de1,
+                        limb2: 0x65d0805e3c90a1c5,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x849748e899765aac68deb262,
+                        limb1: 0x4305f23fb7d8a974be3abb61,
+                        limb2: 0x724b3257f8e15019,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x4c08221e436688185898613a,
+                        limb1: 0x6f41cbb07ad45489da3e0d02,
+                        limb2: 0x44079308c1cd7b20,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd0cd831ee27b790eda3a4262,
+                        limb1: 0xf4884f95136dd57f1643923a,
+                        limb2: 0x23304b0ce3d855a6,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x28ff4335775091b44563b7b4,
+                        limb1: 0x53955b152779201bf85bc0a5,
+                        limb2: 0x20ab1b44fced3015,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_den: array![
+                    u384 {
+                        limb0: 0x9616b1a99786b45c1194102b,
+                        limb1: 0xb0b30329e71229e321a0fee4,
+                        limb2: 0x2703147e3b4ee954,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xe9bf64360d00f7ff98b72b17,
+                        limb1: 0xc4d58ae1c3625e30f629330,
+                        limb2: 0x7122586f305448f6,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xed862b73c881851dfee4cb82,
+                        limb1: 0x2a30f84b4482fad6289205af,
+                        limb2: 0x6cf0eebdf655978e,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x40ad6409fc7c76b3f3e9420c,
+                        limb1: 0xb4fd81dce18d092a7f5fe675,
+                        limb2: 0xeb872285a54bcc,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x1a11f9bee5f6500649a7122e,
+                        limb1: 0xc6007c074867a1b4b30259c8,
+                        limb2: 0x1865278c713664d0,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x70dd6785f186189e1086d3c5,
+                        limb1: 0xa8b7fcc48442fc78feaaa48c,
+                        limb2: 0x2bf2a1cde1dbd7b0,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xe5afc5c1028d21499150123c,
+                        limb1: 0xe54d3c0d4ff53bc0d1067fd0,
+                        limb2: 0x195eae8fd06c4e98,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x44486acf705e3b07ba93e407,
+                        limb1: 0x53009763f545f570d0f618ec,
+                        limb2: 0x4736f82fc69e3948,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x57dcaa6b3b244fe4c89ebfaf,
+                        limb1: 0x2bb3d12da175ccd182403803,
+                        limb2: 0x464f5b5019bb913,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x882d6a9cc8a0f213badefd9a,
+                        limb1: 0x71e22f53886e51d5f5e6818,
+                        limb2: 0x66c8ebc09d993862,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x9cd6ac53d3914faf16490ec1,
+                        limb1: 0x3b78403fac51c25dc83a184a,
+                        limb2: 0xf17524fbfccc943,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xcf27197a22306938afcf8671,
+                        limb1: 0x55a233e8f4480f6d0ac348ce,
+                        limb2: 0x23ed97e5a2fbce30,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x2890f990a434bca74468f621,
+                        limb1: 0xcc3a2df7411a3abb2049dd44,
+                        limb2: 0x67c5fa7e110872ab,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xf0ad000e2b5e161f06c2dc4e,
+                        limb1: 0xc01d5bc8a87673c4bf262b73,
+                        limb2: 0x52c4c7e120a3b7c2,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x26df0e4e6314543a0b329c3d,
+                        limb1: 0x7abd00d3db02eef75fee54bd,
+                        limb2: 0x3bcd3b72d949503d,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+            },
+        };
+        let derive_point_from_x_hint = DerivePointFromXHint {
+            y_last_attempt: u384 {
+                limb0: 0x3ee8ee56d7353d0b52829174,
+                limb1: 0xaec7ddf886b3fa0d22f7d95a,
+                limb2: 0xc93917b83a25c63,
+                limb3: 0x0,
+            },
+            g_rhs_sqrt: array![
+                u384 {
+                    limb0: 0xbb144b395124fd449c939971,
+                    limb1: 0x4b2f90fcce2696bcece66c9f,
+                    limb2: 0x23875beda8a2575d,
+                    limb3: 0x0,
+                },
+            ]
+                .span(),
+        };
+        let points = array![
+            G1Point {
+                x: u384 {
+                    limb0: 0x343c227ebd346823a58bd40c,
+                    limb1: 0x1d1ce695f3fa8e148c05356b,
+                    limb2: 0x6f102d3844f75fac,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1a0926a70143b949d3d62912,
+                    limb1: 0x2e2453bab54437660ff59a2c,
+                    limb2: 0x4b7e1471dc5d659e,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x70847df35c50efde684eaf8a,
+                    limb1: 0xba12a3e2c7c3bb3888bbf789,
+                    limb2: 0xeac7d9f8aba0ba2,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x69fc584e4dbb7791d3c4e6c4,
+                    limb1: 0x76fad315529a930b896a244d,
+                    limb2: 0x5b85acfaab406d4a,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x9a335d3eb206c8b12da3be80,
+                    limb1: 0x7672ee60995fc87b7bb509a6,
+                    limb2: 0x5307a715d268b104,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x488d6e7bb40ae2738f65b0bf,
+                    limb1: 0xdd22b3786019d60332e89aa0,
+                    limb2: 0x4cba7fd0544bb259,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x183fc457fc9abafd9234b5f6,
+                    limb1: 0xedcca34fb75cf29b9c8fdba0,
+                    limb2: 0x595e009565926d04,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xbe824606b96d1f332311c1d6,
+                    limb1: 0x6a60658be784992575d1a840,
+                    limb2: 0x1d0ff38dbd33d21a,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0xe2ff6097d5fbfe9df375018a,
+                    limb1: 0x4841e9fcb2b772379fcd46b8,
+                    limb2: 0x5fec86ec670cd255,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x4aff42433ee32c4089fd7947,
+                    limb1: 0x7b5365752eac90423f71459,
+                    limb2: 0x38c450f649330823,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x4c57b74f33fb9a67e2940d21,
+                    limb1: 0xe3c5437ccb739f8596309dc0,
+                    limb2: 0x25d44f0d463db064,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x4c76bee711c67c78b123a699,
+                    limb1: 0x5dbade531096a023ef80a0e9,
+                    limb2: 0x3740dc661d8f8a65,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x9f5bd89890a65479891539d6,
+                    limb1: 0x9bf1b7febdcd85336bad7a77,
+                    limb2: 0xe46074904751eb,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xb44da682705fd4b974134d1f,
+                    limb1: 0x62d49f513c35513331e003c1,
+                    limb2: 0x65e3571738f4c496,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x6dd88e70e64556d5f6758643,
+                    limb1: 0x92eb998d09f6b5f38ab15351,
+                    limb2: 0x288047018f365160,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1b98098103a26ad8f6426a8a,
+                    limb1: 0x672ed1f15ebcf0eb5e12e783,
+                    limb2: 0x192a5d395b2d41be,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0xa853c41aa78ac263f75ff80a,
+                    limb1: 0xb149484069d9a6bdfe576986,
+                    limb2: 0x4052c5d8fa1210c9,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x2533d5501190f7b510597fe8,
+                    limb1: 0xc8c35ba5b738c814f0f819ee,
+                    limb2: 0x3e79e43ea12f11b7,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x3292ea92011c05e0731158fa,
+                    limb1: 0xbac6a6f631500f38fde1cca9,
+                    limb2: 0x4c416747807e6033,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x77a0f7b4eec5070c47fc4a31,
+                    limb1: 0x5fda6a901e6be38695b1ac33,
+                    limb2: 0x32fa13f9f99868c5,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        ]
+            .span();
+        let scalars = array![
+            u256 { low: 0x0, high: 0x0 },
+            u256 {
+                low: 0xe005b86051ef1922fe43c49e149818d1, high: 0x7d41e60eece328bff7b118e820865d6,
+            },
+            u256 {
+                low: 0x4a84eb038d1fd9b74d2b9deb1beb3711, high: 0x552f2338c25166a1ff39849b4e1357d,
+            },
+            u256 {
+                low: 0x3405095c8a5006c1ec188efbd080e66e, high: 0x8c1745a9a6a5f92cca74147f6be1f72,
+            },
+            u256 {
+                low: 0x1775336d71eacd0549a3e80e966e1277, high: 0x5129fb76288e1a5cc45782198a6416d,
+            },
+            u256 {
+                low: 0x2f1205544a5308cc3dfabc08935ddd72, high: 0x870e152fcd81b5d24bace4307bf326,
+            },
+            u256 {
+                low: 0x42930b33a81ad477fb3675b89cdeb3e6, high: 0xadc0da716febaa011af923d79fdef7c,
+            },
+            u256 {
+                low: 0x2648ee38e07405eb215663abc1f254b8, high: 0x148b275d7ab792809e469e6ec62b2c8,
+            },
+            u256 {
+                low: 0xd450fe4aec4f217bb306d1a8e5eeac76, high: 0xd67e55f642bfa42aef9c00b8a64c1b9,
+            },
+            u256 {
+                low: 0x85940927468ff53d864a7a50b48d73f1, high: 0x37176e8d977e9933c49d76fcfc6e625,
+            },
+            u256 {
+                low: 0xd344749096fd35d0adf20806e5214606, high: 0x46743749466e4726b5f5241f323ca74,
+            },
+        ]
+            .span();
+
+        let res = msm_g1(
+            scalars_digits_decompositions, msm_hint, derive_point_from_x_hint, points, scalars, 6,
+        );
+        assert!(
+            res == G1Point {
+                x: u384 {
+                    limb0: 0x6077f9ed12d1634ce270fe91,
+                    limb1: 0x626c01bd112cb1b852eca2c2,
+                    limb2: 0x59152be441f1f4bf,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x49362dbe223d18c33538e287,
+                    limb1: 0x81d425471403f236ea648895,
+                    limb2: 0x322c379f19a5fc10,
+                    limb3: 0x0,
+                },
+            },
+        );
+    }
+
+
+    #[test]
+    fn test_msm_JUBJUB_12P() {
+        let scalars_digits_decompositions = Option::None;
+        let msm_hint = MSMHint {
+            Q_low: G1Point {
+                x: u384 {
+                    limb0: 0x92b20cf6c1478820423dc87a,
+                    limb1: 0x556323985e648bcd96400a87,
+                    limb2: 0x3e64e61040aed33,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xf6e5b9eecbc4198061cc218a,
+                    limb1: 0x480733c2b363411f4dc1d0f,
+                    limb2: 0x2ea67b2065c5ef56,
+                    limb3: 0x0,
+                },
+            },
+            Q_high: G1Point {
+                x: u384 {
+                    limb0: 0xc78421c7e388192d4fd57a13,
+                    limb1: 0xe76b1ef0af2f99c78d075f9d,
+                    limb2: 0x6d0ae635d987370a,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x523ee5ab7aaa201e3b329d79,
+                    limb1: 0x201b8d2389977904d4469def,
+                    limb2: 0x59723128960f63e6,
+                    limb3: 0x0,
+                },
+            },
+            Q_high_shifted: G1Point {
+                x: u384 {
+                    limb0: 0x640cda1ecdff780c174b6c92,
+                    limb1: 0x20a1a53e8a75dad14e065550,
+                    limb2: 0x730a0ca41cd2e668,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xab40eed3592cceb7746115ec,
+                    limb1: 0x2aa327aa2342c5fab72ba329,
+                    limb2: 0x438ceb88692dd2ce,
+                    limb3: 0x0,
+                },
+            },
+            RLCSumDlogDiv: FunctionFelt {
+                a_num: array![
+                    u384 {
+                        limb0: 0xf9e0086e87a1173b7306669b,
+                        limb1: 0x839815b384bd5987a33dce76,
+                        limb2: 0x65a794519c27894b,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xf5bbe7aa44b5c3b0a13d4459,
+                        limb1: 0xe5f35896fe3a5779106771a3,
+                        limb2: 0x580279bcfe0c0e38,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x34d7efacbdb637f5c59f07bc,
+                        limb1: 0x5896d003c17e11cf7f3e0678,
+                        limb2: 0x6043c2fde1b99e5f,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x3b7fe1b777883fcf964ff43e,
+                        limb1: 0x4d292c49b9cf05dbf8da1e88,
+                        limb2: 0x55c7e99e5734c636,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x2925aa96f9586a4f672e4e1e,
+                        limb1: 0x92253c15dd0e172ef9f791f9,
+                        limb2: 0x467b20be97254985,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xf9d6cf548df1822dc4b82bd1,
+                        limb1: 0x38ae258706dded323031df7b,
+                        limb2: 0x295bf680c4117498,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x115cbaae2c6dae5d7f55e6e2,
+                        limb1: 0xb76c0b3327336aea7dd98cb9,
+                        limb2: 0x45a58483593f5ab1,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x3ea0f4e54f6ccac1bf7e8d5,
+                        limb1: 0x82452b79c6a404e9b1dd6b9d,
+                        limb2: 0x41d61b3adf3e05e,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x559d8b89a166ba218fc6913b,
+                        limb1: 0x16d7641bb34e0ece746d09a0,
+                        limb2: 0x1cf043d2b33a3ae3,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x1a07ee9a44e0d5d88f8d1117,
+                        limb1: 0x7c9dc559b549883a64b24c80,
+                        limb2: 0xd0421a08c717b7,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x371a69983e22ddc5315d4e36,
+                        limb1: 0x335c7a297ada6c87ee26babb,
+                        limb2: 0x736a332b22070da2,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x6be9199099dd472fb62a0d6d,
+                        limb1: 0x33fcf23165536d296d036ecc,
+                        limb2: 0x388bfb304e1bec42,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x5c2ffefd2ca8227cdfd88ee6,
+                        limb1: 0x401baf873d744b7551f31610,
+                        limb2: 0x6819573ec57c2e01,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                a_den: array![
+                    u384 {
+                        limb0: 0x75ac30e924519beedbc9959e,
+                        limb1: 0xabbacde8dd5e7d0083a7d2e7,
+                        limb2: 0xc633987b422e761,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x25768206d7fbc27a22e75039,
+                        limb1: 0x1ef76d2fa8b2e188b6bbc0ee,
+                        limb2: 0x5ee9238bbb49a2aa,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x33a1ac488d3c7d82274d8f08,
+                        limb1: 0xfaa2d8099e6e09ae9e9f1e06,
+                        limb2: 0x70e05d009b998f91,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x60d7a00401ad574cae98f531,
+                        limb1: 0xd37aaa677403797b617798b1,
+                        limb2: 0x588585c6d00e79b1,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xf1fcbe2b6c89f729251a1af,
+                        limb1: 0x89e25dcc3b10fa988134f4f8,
+                        limb2: 0x188de01ef3679c0a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x1a8975b0018fec65a974ed4f,
+                        limb1: 0xebc565b13754227191895dea,
+                        limb2: 0x42019e671b815c43,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x3d7c236af70b576a95cbbe8b,
+                        limb1: 0x1becd0610a3182453bb8458e,
+                        limb2: 0x5177ac2b4446edc8,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xb36ba54504ce4e95908b6e4,
+                        limb1: 0xa09734c76db5e1e309289d7d,
+                        limb2: 0x4cdee243f3ead528,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd6b724556eb35504fb4d0c96,
+                        limb1: 0x816b5d63e21af832b3dc6760,
+                        limb2: 0x329d9138b866b978,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x15fa3e13e40ae201297833b7,
+                        limb1: 0x5592d815efaeddb2d32a7144,
+                        limb2: 0x649c4f2700b96526,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x8273a746a095588484e3bfb4,
+                        limb1: 0xe7e044ec0aea8a8224418983,
+                        limb2: 0x5343c7036edb6a43,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x43614dcc5927ae5c10747840,
+                        limb1: 0x4a2c85a9ee4fc5fb62f03172,
+                        limb2: 0x69a1c80ed32a26e1,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x831ad2fed96c910a3518c200,
+                        limb1: 0x33aea8f92c10bddcb88a9306,
+                        limb2: 0x34c34a82ff259b0d,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_num: array![
+                    u384 {
+                        limb0: 0xc6b1f4fc92d0a5f9e1618d94,
+                        limb1: 0xb33ddea618b1ab19f28ce3d0,
+                        limb2: 0x5b61a1d477bfad42,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x5b2e187ef7b1ca2d24d41353,
+                        limb1: 0x33168a08725f3fa0e0202e5,
+                        limb2: 0x33411fae8e114d0d,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x1c585c787e836a4eeca923dc,
+                        limb1: 0xe6042b87e52016a8a0a9810f,
+                        limb2: 0x4b9efc4e24d2496d,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x8eac9cf9c1938b34d76967d5,
+                        limb1: 0xa46ab0c5ccfa4e108a2fefac,
+                        limb2: 0x234979ee6a389594,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x4afa97f39e32b0a04e6f71b9,
+                        limb1: 0xa51a29edbe74940c4fa74e3e,
+                        limb2: 0x6064b2df3cd74a70,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x53eaa3152d6e93ad63c15c87,
+                        limb1: 0x655ed3b7dd866c6200c29f37,
+                        limb2: 0x369b65310b092fae,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x886645d432c0579f496bcbfa,
+                        limb1: 0xb5440d9da225e5bdd5f16d34,
+                        limb2: 0x45ddab600c403bdb,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xe1cf0fa7b3c0b06d82f91989,
+                        limb1: 0x9837797672682109f1d5b1ea,
+                        limb2: 0x9d8fbf1d2af78b0,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x4003c744915d973400e641cb,
+                        limb1: 0x21b6cc19b000a4cbc9f81dcb,
+                        limb2: 0x10d87db4793b8220,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xe0497188a51ca552d83bc542,
+                        limb1: 0x27e45bfcc33a61c027d45434,
+                        limb2: 0x72d13a8c002dd96e,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xd8e5ba1bd79e2e9839295ec1,
+                        limb1: 0x57c56d8586255ffff95be613,
+                        limb2: 0x49608c34a34a13d6,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x1e4a79f9d3e7659be4c792ca,
+                        limb1: 0x2a67077a9f2d4d7bd53aed4,
+                        limb2: 0x4bb2b01176c3e173,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x18004d05d59fa2e411d672ec,
+                        limb1: 0x3977c9cfa974c0594ecbc8e7,
+                        limb2: 0x612f230ea14e4236,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xe8d506eed067de7783cad18b,
+                        limb1: 0x399c1e92b8f166e8436c7f9d,
+                        limb2: 0x482ebae0204c03f5,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_den: array![
+                    u384 {
+                        limb0: 0x6cd7697bb767cb8bbd38fbdd,
+                        limb1: 0x5a0e3bf20b7e87fd230903b8,
+                        limb2: 0x15551add0dc9ac37,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xcfa0a3f8357f2f4e1f79ed1e,
+                        limb1: 0x3ee3ae5a75550c2ded4bba78,
+                        limb2: 0x924655fffc73340,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x1f16e45084dced10f87a09be,
+                        limb1: 0xd2adf2cdd6457d14bb43a15a,
+                        limb2: 0x51a4991fb37e9ca,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xc12a7fd87f83e1f76c6579c5,
+                        limb1: 0xe1408c97441c48fb770b6e9d,
+                        limb2: 0x48ba7bb788bd35e,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x8047e391f51630488d6fcdbe,
+                        limb1: 0x952d71ec504f41648dcbbb2c,
+                        limb2: 0x2ac5f0084a87bc96,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x57666ea5c6eeef8da6173080,
+                        limb1: 0xa7d9b38f27e4cc768265b426,
+                        limb2: 0x4617f1b5544f7b93,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xa4974062e21d3007246b10f7,
+                        limb1: 0x2ea21a57b57a02025cafe21f,
+                        limb2: 0x4c26ddd3eb9057bd,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xfbf23ff362ad1e711cffbc09,
+                        limb1: 0xe77aa12dc149b29a58285a1d,
+                        limb2: 0x2d063b4f29e09280,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x4368de4007f611a8c50fdc37,
+                        limb1: 0x43b11fcc9fb58f683a6dd4d1,
+                        limb2: 0x502eb12dad6ac4d5,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x9485fa532305b338f22d853c,
+                        limb1: 0xc635c55264dc542772b77a0c,
+                        limb2: 0x6180924fe584e146,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x170150c8ae755cbcb3d38103,
+                        limb1: 0xe3666e4a19b8cf7403f897b6,
+                        limb2: 0x186c4e94e6c5c11b,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xe739f0de7bffdcb406eca916,
+                        limb1: 0x1feff5fbb5b073e617986fc,
+                        limb2: 0x103dd0b8c82a4e7a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xea262e60296ba04652b1215c,
+                        limb1: 0xa6d9f3e6ca92fbc4cedd2ebe,
+                        limb2: 0x11849ff8c49b298e,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x7869d2a6401d4b817d584686,
+                        limb1: 0xd052dea0f9f42751daa46031,
+                        limb2: 0x351ebe5d8e5c7c7,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xa1c685021e34e339e5368181,
+                        limb1: 0xae54ce421c38111e2f85ebe3,
+                        limb2: 0x6952ab8b17ff1081,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x831ad2fed96c910a3518c200,
+                        limb1: 0x33aea8f92c10bddcb88a9306,
+                        limb2: 0x34c34a82ff259b0d,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+            },
+        };
+        let derive_point_from_x_hint = DerivePointFromXHint {
+            y_last_attempt: u384 {
+                limb0: 0x17571c16b6d7d6c78a8f1a4,
+                limb1: 0xa813016db31b61a3543cc9ef,
+                limb2: 0x268dcb56d5ed9bcc,
+                limb3: 0x0,
+            },
+            g_rhs_sqrt: array![].span(),
+        };
+        let points = array![
+            G1Point {
+                x: u384 {
+                    limb0: 0x343c227ebd346823a58bd40c,
+                    limb1: 0x1d1ce695f3fa8e148c05356b,
+                    limb2: 0x6f102d3844f75fac,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1a0926a70143b949d3d62912,
+                    limb1: 0x2e2453bab54437660ff59a2c,
+                    limb2: 0x4b7e1471dc5d659e,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x70847df35c50efde684eaf8a,
+                    limb1: 0xba12a3e2c7c3bb3888bbf789,
+                    limb2: 0xeac7d9f8aba0ba2,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x69fc584e4dbb7791d3c4e6c4,
+                    limb1: 0x76fad315529a930b896a244d,
+                    limb2: 0x5b85acfaab406d4a,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x9a335d3eb206c8b12da3be80,
+                    limb1: 0x7672ee60995fc87b7bb509a6,
+                    limb2: 0x5307a715d268b104,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x488d6e7bb40ae2738f65b0bf,
+                    limb1: 0xdd22b3786019d60332e89aa0,
+                    limb2: 0x4cba7fd0544bb259,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x183fc457fc9abafd9234b5f6,
+                    limb1: 0xedcca34fb75cf29b9c8fdba0,
+                    limb2: 0x595e009565926d04,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xbe824606b96d1f332311c1d6,
+                    limb1: 0x6a60658be784992575d1a840,
+                    limb2: 0x1d0ff38dbd33d21a,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0xe2ff6097d5fbfe9df375018a,
+                    limb1: 0x4841e9fcb2b772379fcd46b8,
+                    limb2: 0x5fec86ec670cd255,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x4aff42433ee32c4089fd7947,
+                    limb1: 0x7b5365752eac90423f71459,
+                    limb2: 0x38c450f649330823,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x4c57b74f33fb9a67e2940d21,
+                    limb1: 0xe3c5437ccb739f8596309dc0,
+                    limb2: 0x25d44f0d463db064,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x4c76bee711c67c78b123a699,
+                    limb1: 0x5dbade531096a023ef80a0e9,
+                    limb2: 0x3740dc661d8f8a65,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x9f5bd89890a65479891539d6,
+                    limb1: 0x9bf1b7febdcd85336bad7a77,
+                    limb2: 0xe46074904751eb,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xb44da682705fd4b974134d1f,
+                    limb1: 0x62d49f513c35513331e003c1,
+                    limb2: 0x65e3571738f4c496,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x6dd88e70e64556d5f6758643,
+                    limb1: 0x92eb998d09f6b5f38ab15351,
+                    limb2: 0x288047018f365160,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1b98098103a26ad8f6426a8a,
+                    limb1: 0x672ed1f15ebcf0eb5e12e783,
+                    limb2: 0x192a5d395b2d41be,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0xa853c41aa78ac263f75ff80a,
+                    limb1: 0xb149484069d9a6bdfe576986,
+                    limb2: 0x4052c5d8fa1210c9,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x2533d5501190f7b510597fe8,
+                    limb1: 0xc8c35ba5b738c814f0f819ee,
+                    limb2: 0x3e79e43ea12f11b7,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x3292ea92011c05e0731158fa,
+                    limb1: 0xbac6a6f631500f38fde1cca9,
+                    limb2: 0x4c416747807e6033,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x77a0f7b4eec5070c47fc4a31,
+                    limb1: 0x5fda6a901e6be38695b1ac33,
+                    limb2: 0x32fa13f9f99868c5,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x842cdaf57f47d56e395c4b20,
+                    limb1: 0xf02fb3a885b8b0b756c06456,
+                    limb2: 0x1bf537ad1fb60695,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xaa4e16cba63abf409f82175b,
+                    limb1: 0x3abeff8a3f31d8db776766e0,
+                    limb2: 0x5aa53c29c63b8115,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        ]
+            .span();
+        let scalars = array![
+            u256 { low: 0x0, high: 0x0 },
+            u256 {
+                low: 0x4a84eb038d1fd9b74d2b9deb1beb3711, high: 0x552f2338c25166a1ff39849b4e1357d,
+            },
+            u256 {
+                low: 0x3405095c8a5006c1ec188efbd080e66e, high: 0x8c1745a9a6a5f92cca74147f6be1f72,
+            },
+            u256 {
+                low: 0x1775336d71eacd0549a3e80e966e1277, high: 0x5129fb76288e1a5cc45782198a6416d,
+            },
+            u256 {
+                low: 0x2f1205544a5308cc3dfabc08935ddd72, high: 0x870e152fcd81b5d24bace4307bf326,
+            },
+            u256 {
+                low: 0x42930b33a81ad477fb3675b89cdeb3e6, high: 0xadc0da716febaa011af923d79fdef7c,
+            },
+            u256 {
+                low: 0x2648ee38e07405eb215663abc1f254b8, high: 0x148b275d7ab792809e469e6ec62b2c8,
+            },
+            u256 {
+                low: 0xd450fe4aec4f217bb306d1a8e5eeac76, high: 0xd67e55f642bfa42aef9c00b8a64c1b9,
+            },
+            u256 {
+                low: 0x85940927468ff53d864a7a50b48d73f1, high: 0x37176e8d977e9933c49d76fcfc6e625,
+            },
+            u256 {
+                low: 0xd344749096fd35d0adf20806e5214606, high: 0x46743749466e4726b5f5241f323ca74,
+            },
+            u256 {
+                low: 0x5306f3f5151665705b7c709acb175a5a, high: 0x964a8707c879b741d878f9f9cdf5a86,
+            },
+            u256 {
+                low: 0x30bcab0ed857010255d44936a1515607, high: 0x4562be7bb42e0b20426465e3e37952d,
+            },
+        ]
+            .span();
+
+        let res = msm_g1(
+            scalars_digits_decompositions, msm_hint, derive_point_from_x_hint, points, scalars, 6,
+        );
+        assert!(
+            res == G1Point {
+                x: u384 {
+                    limb0: 0x5b7dd58f5d7eade3a9e1c4b7,
+                    limb1: 0xfef63f088c126890b90ffc9d,
+                    limb2: 0xd1ebfed28b8296,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x509985c3e619d6318580b3c4,
+                    limb1: 0xc1797ca6c8bfe824c2d4c19d,
+                    limb2: 0x3ec148215b015519,
+                    limb3: 0x0,
+                },
+            },
+        );
+    }
+
+
+    #[test]
     fn test_msm_BN254_1P_edge_case() {
         let scalars_digits_decompositions = Option::None;
         let msm_hint = MSMHint {
@@ -18386,6 +20973,480 @@ mod msm_tests {
                     limb0: 0x990d5f4767a8d057f8695e4e,
                     limb1: 0x5f8dd4e272c268c0d2ce4a39,
                     limb2: 0x1704905427d31a82,
+                    limb3: 0x0,
+                },
+            },
+        );
+    }
+
+
+    #[test]
+    fn test_msm_JUBJUB_1P_edge_case() {
+        let scalars_digits_decompositions = Option::None;
+        let msm_hint = MSMHint {
+            Q_low: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            Q_high: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            Q_high_shifted: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            RLCSumDlogDiv: FunctionFelt {
+                a_num: array![
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                a_den: array![
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_num: array![
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_den: array![
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+            },
+        };
+        let derive_point_from_x_hint = DerivePointFromXHint {
+            y_last_attempt: u384 {
+                limb0: 0x375aa1bf38bbb65b4e37cb69,
+                limb1: 0x271148bd80e169f2078c3313,
+                limb2: 0x1381c68e494f3181,
+                limb3: 0x0,
+            },
+            g_rhs_sqrt: array![
+                u384 {
+                    limb0: 0x8d0b9485df9a5f95875770db,
+                    limb1: 0x481662369feec7ac25ab5b49,
+                    limb2: 0x1a5ebb0604449e64,
+                    limb3: 0x0,
+                },
+            ]
+                .span(),
+        };
+        let points = array![
+            G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        ]
+            .span();
+        let scalars = array![u256 { low: 0x0, high: 0x0 }].span();
+
+        let res = msm_g1(
+            scalars_digits_decompositions, msm_hint, derive_point_from_x_hint, points, scalars, 6,
+        );
+        assert!(
+            res == G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        );
+    }
+
+
+    #[test]
+    fn test_msm_JUBJUB_2P_edge_case() {
+        let scalars_digits_decompositions = Option::None;
+        let msm_hint = MSMHint {
+            Q_low: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            Q_high: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            Q_high_shifted: G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+            RLCSumDlogDiv: FunctionFelt {
+                a_num: array![
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                a_den: array![
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_num: array![
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_den: array![
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+            },
+        };
+        let derive_point_from_x_hint = DerivePointFromXHint {
+            y_last_attempt: u384 {
+                limb0: 0xcf87d3785e871e79ec22c9c6,
+                limb1: 0xe727358367b576289f43a641,
+                limb2: 0x1337ef5750f1b2cf,
+                limb3: 0x0,
+            },
+            g_rhs_sqrt: array![
+                u384 {
+                    limb0: 0xf4da344a7e70110b671aee89,
+                    limb1: 0xfff97e79598f5b24a4ecce15,
+                    limb2: 0x1d49059164c08f1c,
+                    limb3: 0x0,
+                },
+            ]
+                .span(),
+        };
+        let points = array![
+            G1Point {
+                x: u384 {
+                    limb0: 0x343c227ebd346823a58bd40c,
+                    limb1: 0x1d1ce695f3fa8e148c05356b,
+                    limb2: 0x6f102d3844f75fac,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1a0926a70143b949d3d62912,
+                    limb1: 0x2e2453bab54437660ff59a2c,
+                    limb2: 0x4b7e1471dc5d659e,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        ]
+            .span();
+        let scalars = array![
+            u256 { low: 0x0, high: 0x0 },
+            u256 {
+                low: 0xb4862b21fb97d43588561712e8e5216a, high: 0x259f432e6f4590b9a164106cf6a659e,
+            },
+        ]
+            .span();
+
+        let res = msm_g1(
+            scalars_digits_decompositions, msm_hint, derive_point_from_x_hint, points, scalars, 6,
+        );
+        assert!(
+            res == G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        );
+    }
+
+
+    #[test]
+    fn test_msm_JUBJUB_3P_edge_case() {
+        let scalars_digits_decompositions = Option::None;
+        let msm_hint = MSMHint {
+            Q_low: G1Point {
+                x: u384 {
+                    limb0: 0x53348913c19b741d0d50d389,
+                    limb1: 0x4dac220f3b0a7798f506a13a,
+                    limb2: 0x23e0e97a0befd198,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x24f34284b45e1e3875e67df8,
+                    limb1: 0x3a017e3e97d13795773aa0f8,
+                    limb2: 0x31b2432419e6e4f2,
+                    limb3: 0x0,
+                },
+            },
+            Q_high: G1Point {
+                x: u384 {
+                    limb0: 0x6a2d578bf23591e5b3895d16,
+                    limb1: 0xbcdf34f90916561a9d352077,
+                    limb2: 0x67d63c38bfe05d06,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x44255a02b5e4a6948157c60f,
+                    limb1: 0x384b21bf0b08a2b30079372b,
+                    limb2: 0x1354dfd3db4a4d4f,
+                    limb3: 0x0,
+                },
+            },
+            Q_high_shifted: G1Point {
+                x: u384 {
+                    limb0: 0x3263665fa62dad942ffc7824,
+                    limb1: 0xa3fc7a70c1c6cd84bd35a3c3,
+                    limb2: 0x3fe2146677358630,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x5d33cf98744f1519165e9832,
+                    limb1: 0x190ad25108ed1898139d0c84,
+                    limb2: 0x66e0384605ee689e,
+                    limb3: 0x0,
+                },
+            },
+            RLCSumDlogDiv: FunctionFelt {
+                a_num: array![
+                    u384 {
+                        limb0: 0x7fe3fdb3310e06f9ece3b045,
+                        limb1: 0xf6ee78ee8e7cfea57b2414e8,
+                        limb2: 0x1fe056e4bee279be,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x4b5651a77283ad5f86707c67,
+                        limb1: 0xbd042d6091fad68e13f8db77,
+                        limb2: 0x296854acbef0b9a0,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xec742c5f8d5b3c3998ed0fbc,
+                        limb1: 0xe5838c3588cdb394839f98aa,
+                        limb2: 0x2cececd1b66f211d,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xdd56ea10139e2516ec494d95,
+                        limb1: 0x8a31e9f073df1519b9f621bd,
+                        limb2: 0x38b3bf7bc1ef78c4,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                a_den: array![
+                    u384 {
+                        limb0: 0x977e4bc5260348a69178d99e,
+                        limb1: 0x2e6f0b2965f81dba0581d257,
+                        limb2: 0x614671c6c03feb3a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x8a51a80da7cf7dd7dc6543b2,
+                        limb1: 0x635417e685513308df23cef9,
+                        limb2: 0x620fc4b3a149ebe3,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x80a50abd1f108a8b58b675c0,
+                        limb1: 0xde5ed02e5f7cb1e3eda1cd0a,
+                        limb2: 0x37f042f97529c7dc,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x9fb2f30b49b05c88a6daa7b5,
+                        limb1: 0xfdd93ab445985999cf4deb07,
+                        limb2: 0xd9596ed857b3a1d,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_num: array![
+                    u384 {
+                        limb0: 0xab18aeae7988d8ee77e52ac9,
+                        limb1: 0x3309e49939464ab0f59b6e3b,
+                        limb2: 0x128cb10a8f82994d,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x31ff21abdbd16c63a4e5c331,
+                        limb1: 0x66c028ef156b8bdf64f5ac40,
+                        limb2: 0x5e00514809f5c525,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x22a8d6cd343b21891e857f4a,
+                        limb1: 0x6630e7a42670029a800f7969,
+                        limb2: 0x3b9a8e3061a5e738,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x807be4527512d67234ff887f,
+                        limb1: 0x5757f7413bb149bdab1a033f,
+                        limb2: 0x38be9dbca00eec6f,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x5143d62cef0eb760ab0feecd,
+                        limb1: 0xd8e211d36fd77e17b6abe489,
+                        limb2: 0x3fc7476d73ab7439,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+                b_den: array![
+                    u384 {
+                        limb0: 0x43daaaaf4440c8dd25db7274,
+                        limb1: 0xb863b2cc4f46e61e1d67ce6d,
+                        limb2: 0x701557677ae84750,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xcd455ccc13ee0b508601a2ec,
+                        limb1: 0xd509edef5da01fbc60b51e6a,
+                        limb2: 0x5e80aad3ae6d9a7a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xa56d91e69a42eaf64eb01453,
+                        limb1: 0xca9983beecaca6f36e9dfda5,
+                        limb2: 0x603b52db565cab69,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xc3983edac39f15fcefca7669,
+                        limb1: 0xf755f53c8a2190e99c34d00d,
+                        limb2: 0x2030bf1e9bed99ca,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xa1a0b33cd7d9a51536f4037b,
+                        limb1: 0x140aace68aea45acaf6fb930,
+                        limb2: 0x26ad05643521e93a,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0xdf0a41f2e41dbf692d787f01,
+                        limb1: 0x428718c68d64fd06ba37877b,
+                        limb2: 0x37a12675b9feb17d,
+                        limb3: 0x0,
+                    },
+                    u384 {
+                        limb0: 0x9fb2f30b49b05c88a6daa7b5,
+                        limb1: 0xfdd93ab445985999cf4deb07,
+                        limb2: 0xd9596ed857b3a1d,
+                        limb3: 0x0,
+                    },
+                    u384 { limb0: 0x1, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                    u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                ]
+                    .span(),
+            },
+        };
+        let derive_point_from_x_hint = DerivePointFromXHint {
+            y_last_attempt: u384 {
+                limb0: 0x9a96f200cacb57344e2f9ff5,
+                limb1: 0xdbec078d15b524a1fb1807ff,
+                limb2: 0xcf8a6e68523c171,
+                limb3: 0x0,
+            },
+            g_rhs_sqrt: array![].span(),
+        };
+        let points = array![
+            G1Point {
+                x: u384 {
+                    limb0: 0x343c227ebd346823a58bd40c,
+                    limb1: 0x1d1ce695f3fa8e148c05356b,
+                    limb2: 0x6f102d3844f75fac,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x1a0926a70143b949d3d62912,
+                    limb1: 0x2e2453bab54437660ff59a2c,
+                    limb2: 0x4b7e1471dc5d659e,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 {
+                    limb0: 0x70847df35c50efde684eaf8a,
+                    limb1: 0xba12a3e2c7c3bb3888bbf789,
+                    limb2: 0xeac7d9f8aba0ba2,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0x69fc584e4dbb7791d3c4e6c4,
+                    limb1: 0x76fad315529a930b896a244d,
+                    limb2: 0x5b85acfaab406d4a,
+                    limb3: 0x0,
+                },
+            },
+            G1Point {
+                x: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+                y: u384 { limb0: 0x0, limb1: 0x0, limb2: 0x0, limb3: 0x0 },
+            },
+        ]
+            .span();
+        let scalars = array![
+            u256 { low: 0x0, high: 0x0 },
+            u256 {
+                low: 0x12e0c8b2bad640fb19488dec4f65d4d9, high: 0x5487ce1af19922ad9b8a714e61a441c,
+            },
+            u256 {
+                low: 0x5a92118719c78df48f4ff31e78de5857, high: 0xa3f2c9b9c6316b950f244556f25e2a2,
+            },
+        ]
+            .span();
+
+        let res = msm_g1(
+            scalars_digits_decompositions, msm_hint, derive_point_from_x_hint, points, scalars, 6,
+        );
+        assert!(
+            res == G1Point {
+                x: u384 {
+                    limb0: 0x9df17ee0fc495d3d9a67803a,
+                    limb1: 0x7588bd9043ebc123d73153c0,
+                    limb2: 0x931e07968c5d891,
+                    limb3: 0x0,
+                },
+                y: u384 {
+                    limb0: 0xd1989be7d679ff7d3e370f20,
+                    limb1: 0xd13e1f3af8f3c0ff23f52ae9,
+                    limb2: 0x490a4e861a0b4c06,
                     limb3: 0x0,
                 },
             },

@@ -29,3 +29,5 @@ tests/contracts_e2e/devnet/*
 
 
 !tools/npm/garaga_rs/*.json
+
+.python-version

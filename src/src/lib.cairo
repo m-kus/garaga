@@ -1,28 +1,26 @@
+pub mod basic_field_ops;
+pub mod circuits;
+pub mod core;
 pub mod definitions;
-pub mod utils;
 pub mod ec_ops;
 pub mod ec_ops_g2;
-pub mod pairing_check;
-pub mod circuits;
 pub mod groth16;
 pub mod hashes;
-pub mod basic_field_ops;
+pub mod pairing_check;
 pub mod single_pairing_tower;
 mod tests;
-pub mod core;
+pub mod utils;
 
 
 #[cfg(test)]
 mod tests_lib {
-    use core::traits::TryInto;
-
     use core::circuit::{
-        RangeCheck96, AddMod, MulMod, u96, CircuitElement, CircuitInput, circuit_add, circuit_sub,
-        circuit_mul, circuit_inverse, EvalCircuitTrait, u384, CircuitOutputsTrait, CircuitModulus,
-        AddInputResultTrait, CircuitInputs,
+        AddInputResultTrait, AddMod, CircuitElement, CircuitInput, CircuitInputs, CircuitModulus,
+        CircuitOutputsTrait, EvalCircuitTrait, MulMod, RangeCheck96, circuit_add, circuit_inverse,
+        circuit_mul, circuit_sub, u384, u96,
     };
-
     use core::num::traits::{One, Zero};
+    use core::traits::TryInto;
     #[test]
     fn test_u96() {
         let a: u96 = 0x123;
@@ -76,7 +74,7 @@ mod tests_lib {
         let in2 = CircuitElement::<CircuitInput<1>> {};
         let add = circuit_add(in1, in2);
 
-        let mut inputs: Array::<[u96; 4]> = array![[1, 0, 0, 0], [2, 0, 0, 0]];
+        let mut inputs: Array<[u96; 4]> = array![[1, 0, 0, 0], [2, 0, 0, 0]];
         let mut circuit_inputs = (add,).new_inputs();
 
         while let Option::Some(input) = inputs.pop_front() {

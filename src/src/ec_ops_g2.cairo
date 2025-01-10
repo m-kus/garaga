@@ -1,16 +1,13 @@
-use core::circuit::CircuitElement as CE;
-use core::circuit::CircuitInput as CI;
-
 use core::circuit::{
-    u384, circuit_add, circuit_sub, circuit_mul, circuit_inverse, EvalCircuitTrait,
-    CircuitOutputsTrait, CircuitModulus, CircuitInputs,
+    CircuitElement as CE, CircuitInput as CI, CircuitInputs, CircuitModulus, CircuitOutputsTrait,
+    EvalCircuitTrait, circuit_add, circuit_inverse, circuit_mul, circuit_sub, u384,
 };
 use core::option::Option;
-use garaga::core::circuit::AddInputResultTrait2;
-use garaga::definitions::{G2Point, G2PointZero, get_BLS12_381_modulus, get_b2, get_a, get_modulus};
-use garaga::circuits::ec;
-use garaga::utils::u384_assert_zero;
 use garaga::basic_field_ops::neg_mod_p;
+use garaga::circuits::ec;
+use garaga::core::circuit::AddInputResultTrait2;
+use garaga::definitions::{G2Point, G2PointZero, get_BLS12_381_modulus, get_a, get_b2, get_modulus};
+use garaga::utils::u384_assert_zero;
 
 
 #[generate_trait]
@@ -188,8 +185,8 @@ pub fn eq_neg_mod_p(a0: u384, a1: u384, b0: u384, b1: u384) -> bool {
 
 #[cfg(test)]
 mod tests {
-    use super::{eq_mod_p, eq_neg_mod_p, G2Point, G2PointZero, ec_safe_add, u384, ec_mul};
     use garaga::definitions::BLS_G2_GENERATOR;
+    use super::{G2Point, G2PointZero, ec_mul, ec_safe_add, eq_mod_p, eq_neg_mod_p, u384};
     #[test]
     fn test_ec_mul_g2() {
         let g = BLS_G2_GENERATOR;

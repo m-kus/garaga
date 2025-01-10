@@ -7,7 +7,7 @@ use crate::algebra::g1point::G1Point;
 use crate::algebra::rational_function::{FunctionFelt, RationalFunction};
 use crate::definitions::{
     BLS12381PrimeField, BN254PrimeField, CurveParamsProvider, GrumpkinPrimeField,
-    SECP256K1PrimeField, SECP256R1PrimeField, X25519PrimeField,
+    SECP256K1PrimeField, SECP256R1PrimeField, X25519PrimeField, JubJubPrimeField,
 };
 use crate::ecip::ff::FF;
 use crate::io::{
@@ -29,6 +29,7 @@ pub fn zk_ecip_hint(
         3 => handle_curve::<SECP256R1PrimeField>(points, scalars, field_elements_from_big_uints),
         4 => handle_curve::<X25519PrimeField>(points, scalars, field_elements_from_big_uints),
         5 => handle_curve::<GrumpkinPrimeField>(points, scalars, field_elements_from_big_uints),
+        6 => handle_curve::<JubJubPrimeField>(points, scalars, field_elements_from_big_uints),
         _ => Err(String::from("Invalid curve ID")),
     }
 }
