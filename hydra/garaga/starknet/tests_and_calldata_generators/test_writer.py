@@ -244,6 +244,7 @@ mod tower_pairing_tests {
         CurveID.SECP256K1,
         CurveID.ED25519,
         CurveID.GRUMPKIN,
+        CurveID.JUBJUB,
     ]
 
     msm_sizes = [1, 2, 3, 4, 10, 11, 12]

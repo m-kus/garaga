@@ -1,22 +1,21 @@
-use core::result::ResultTrait;
 use core::array::ArrayTrait;
 use core::circuit::{
-    AddMod, MulMod, u96, CircuitElement, CircuitInput, circuit_add, circuit_sub, circuit_mul,
-    circuit_inverse, EvalCircuitResult, EvalCircuitTrait, u384, CircuitOutputsTrait, CircuitModulus,
-    AddInputResultTrait, CircuitInputs, CircuitDefinition, CircuitData, CircuitInputAccumulator,
-};
-use garaga::definitions::{
-    get_a, get_b, get_modulus, get_g, get_min_one, get_b2, get_n, G1Point, G2Point,
-    BLS_X_SEED_SQ_EPNS, BLS_X_SEED_SQ, G1PointZero, THIRD_ROOT_OF_UNITY_BLS12_381_G1, u384Serde,
+    AddInputResultTrait, AddMod, CircuitData, CircuitDefinition, CircuitElement, CircuitInput,
+    CircuitInputAccumulator, CircuitInputs, CircuitModulus, CircuitOutputsTrait, EvalCircuitResult,
+    EvalCircuitTrait, MulMod, circuit_add, circuit_inverse, circuit_mul, circuit_sub, u384, u96,
 };
 use core::option::Option;
 use core::panic_with_felt252;
 use core::poseidon::hades_permutation;
+use core::result::ResultTrait;
+use garaga::basic_field_ops::{add_mod_p, batch_3_mod_p, mul_mod_p, neg_mod_p, sub_mod_p};
 use garaga::circuits::ec;
-use garaga::utils::hashing;
-use garaga::utils::neg_3;
-use garaga::basic_field_ops::{add_mod_p, sub_mod_p, neg_mod_p, mul_mod_p, batch_3_mod_p};
-use garaga::utils::{u384_assert_zero, u384_assert_eq};
+use garaga::definitions::{
+    BLS_X_SEED_SQ, BLS_X_SEED_SQ_EPNS, G1Point, G1PointZero, G2Point,
+    THIRD_ROOT_OF_UNITY_BLS12_381_G1, get_a, get_b, get_b2, get_g, get_min_one, get_modulus, get_n,
+    u384Serde,
+};
+use garaga::utils::{hashing, neg_3, u384_assert_eq, u384_assert_zero};
 
 #[generate_trait]
 impl G1PointImpl of G1PointTrait {
@@ -762,10 +761,8 @@ fn compute_rhs_ecip(
 
 #[cfg(test)]
 mod tests {
+    use core::circuit::u384;
     use core::traits::TryInto;
-
-    use core::circuit::{u384};
-
     use super::{G1Point, derive_ec_point_from_X};
 
     #[test]

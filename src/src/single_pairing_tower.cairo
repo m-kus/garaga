@@ -1,16 +1,14 @@
-use garaga::definitions::{u384};
 use core::num::traits::{One, Zero};
-use garaga::definitions::{G1Point, G2Point, BNProcessedPair, E12T};
+use garaga::basic_field_ops::{compute_yInvXnegOverY_BLS12_381, compute_yInvXnegOverY_BN254};
 use garaga::circuits::multi_pairing_check::{
-    run_BN254_MP_CHECK_PREPARE_PAIRS_1P_circuit, run_BLS12_381_MP_CHECK_PREPARE_PAIRS_1P_circuit,
+    run_BLS12_381_MP_CHECK_PREPARE_PAIRS_1P_circuit, run_BN254_MP_CHECK_PREPARE_PAIRS_1P_circuit,
 };
-
 use garaga::circuits::tower_circuits as tw;
 use garaga::circuits::tower_circuits::{
-    run_BN254_TOWER_MILLER_BIT0_1P_circuit, run_BN254_TOWER_MILLER_BIT1_1P_circuit,
     run_BLS12_381_TOWER_MILLER_BIT0_1P_circuit, run_BLS12_381_TOWER_MILLER_BIT1_1P_circuit,
+    run_BN254_TOWER_MILLER_BIT0_1P_circuit, run_BN254_TOWER_MILLER_BIT1_1P_circuit,
 };
-use garaga::basic_field_ops::{compute_yInvXnegOverY_BLS12_381, compute_yInvXnegOverY_BN254};
+use garaga::definitions::{BNProcessedPair, E12T, G1Point, G2Point, u384};
 use garaga::ec_ops_g2::G2PointTrait;
 
 

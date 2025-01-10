@@ -1,7 +1,7 @@
 use crate::algebra::{g1point::G1Point, rational_function::FunctionFelt};
 use crate::definitions::{
     BLS12381PrimeField, BN254PrimeField, CurveParamsProvider, FieldElement, GrumpkinPrimeField,
-    SECP256K1PrimeField, SECP256R1PrimeField, Stark252PrimeField, X25519PrimeField,
+    SECP256K1PrimeField, SECP256R1PrimeField, Stark252PrimeField, X25519PrimeField, JubJubPrimeField,
 };
 use crate::{
     ecip::core::{neg_3_base_le, run_ecip},
@@ -82,6 +82,15 @@ pub fn msm_calldata_builder(
             risc0_mode,
         ),
         CurveID::GRUMPKIN => handle_curve::<GrumpkinPrimeField>(
+            values,
+            scalars,
+            curve_id as usize,
+            include_digits_decomposition,
+            include_points_and_scalars,
+            serialize_as_pure_felt252_array,
+            risc0_mode,
+        ),
+        CurveID::JUBJUB => handle_curve::<JubJubPrimeField>(
             values,
             scalars,
             curve_id as usize,

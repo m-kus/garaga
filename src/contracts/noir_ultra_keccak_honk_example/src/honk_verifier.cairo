@@ -1,8 +1,8 @@
-use super::honk_verifier_constants::{vk, precomputed_lines};
+use super::honk_verifier_constants::{precomputed_lines, vk};
 use super::honk_verifier_circuits::{
-    run_GRUMPKIN_HONK_SUMCHECK_SIZE_5_PUB_1_circuit,
-    run_GRUMPKIN_HONK_PREP_MSM_SCALARS_SIZE_5_circuit,
     run_BN254_EVAL_FN_CHALLENGE_DUPL_42P_RLC_circuit,
+    run_GRUMPKIN_HONK_PREP_MSM_SCALARS_SIZE_5_circuit,
+    run_GRUMPKIN_HONK_SUMCHECK_SIZE_5_PUB_1_circuit,
 };
 
 #[starknet::interface]
@@ -14,29 +14,29 @@ trait IUltraKeccakHonkVerifier<TContractState> {
 
 #[starknet::contract]
 mod UltraKeccakHonkVerifier {
-    use garaga::definitions::{G1Point, G1G2Pair, BN254_G1_GENERATOR, get_a, get_modulus};
-    use garaga::pairing_check::{multi_pairing_check_bn254_2P_2F, MPCheckHintBN254};
-    use garaga::ec_ops::{
-        G1PointTrait, ec_safe_add, FunctionFeltTrait, DerivePointFromXHint, MSMHintBatched,
-        compute_rhs_ecip, derive_ec_point_from_X, SlopeInterceptOutput,
-    };
-    use garaga::basic_field_ops::{batch_3_mod_p};
-    use garaga::circuits::ec;
-    use garaga::utils::neg_3;
-    use super::{
-        vk, precomputed_lines, run_GRUMPKIN_HONK_SUMCHECK_SIZE_5_PUB_1_circuit,
-        run_GRUMPKIN_HONK_PREP_MSM_SCALARS_SIZE_5_circuit,
-        run_BN254_EVAL_FN_CHALLENGE_DUPL_42P_RLC_circuit,
-    };
-    use garaga::utils::noir::{
-        HonkProof, remove_unused_variables_sumcheck_evaluations, G2_POINT_KZG_1, G2_POINT_KZG_2,
-    };
-    use garaga::utils::noir::keccak_transcript::{
-        HonkTranscriptTrait, Point256IntoCircuitPoint, BATCHED_RELATION_PARTIAL_LENGTH,
-    };
-    use garaga::core::circuit::U64IntoU384;
     use core::num::traits::Zero;
     use core::poseidon::hades_permutation;
+    use garaga::basic_field_ops::batch_3_mod_p;
+    use garaga::circuits::ec;
+    use garaga::core::circuit::U64IntoU384;
+    use garaga::definitions::{BN254_G1_GENERATOR, G1G2Pair, G1Point, get_a, get_modulus};
+    use garaga::ec_ops::{
+        DerivePointFromXHint, FunctionFeltTrait, G1PointTrait, MSMHintBatched, SlopeInterceptOutput,
+        compute_rhs_ecip, derive_ec_point_from_X, ec_safe_add,
+    };
+    use garaga::pairing_check::{MPCheckHintBN254, multi_pairing_check_bn254_2P_2F};
+    use garaga::utils::neg_3;
+    use garaga::utils::noir::keccak_transcript::{
+        BATCHED_RELATION_PARTIAL_LENGTH, HonkTranscriptTrait, Point256IntoCircuitPoint,
+    };
+    use garaga::utils::noir::{
+        G2_POINT_KZG_1, G2_POINT_KZG_2, HonkProof, remove_unused_variables_sumcheck_evaluations,
+    };
+    use super::{
+        precomputed_lines, run_BN254_EVAL_FN_CHALLENGE_DUPL_42P_RLC_circuit,
+        run_GRUMPKIN_HONK_PREP_MSM_SCALARS_SIZE_5_circuit,
+        run_GRUMPKIN_HONK_SUMCHECK_SIZE_5_PUB_1_circuit, vk,
+    };
 
     #[storage]
     struct Storage {}

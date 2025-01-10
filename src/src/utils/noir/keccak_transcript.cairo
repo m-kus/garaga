@@ -1,9 +1,9 @@
-use core::keccak;
-use core::traits::Into;
-use core::poseidon::hades_permutation;
 use core::array::array_slice;
+use core::keccak;
+use core::poseidon::hades_permutation;
+use core::traits::Into;
 use garaga::definitions::G1Point;
-use garaga::utils::noir::{HonkProof, G1Point256, G1PointProof};
+use garaga::utils::noir::{G1Point256, G1PointProof, HonkProof};
 
 const POW2_136: u256 = 0x10000000000000000000000000000000000;
 const POW2_136_NZ: NonZero<u256> = 0x10000000000000000000000000000000000;
@@ -117,8 +117,8 @@ impl HonkTranscriptImpl of HonkTranscriptTrait {
 
 #[cfg(test)]
 mod tests {
-    use super::{HonkProof, G1Point256, HonkTranscript, HonkTranscriptTrait};
     use garaga::utils::noir::get_proof;
+    use super::{G1Point256, HonkProof, HonkTranscript, HonkTranscriptTrait};
     #[test]
     fn test_transcript() {
         let proof = get_proof();

@@ -1,6 +1,6 @@
-use core::sha256::{compute_sha256_u32_array, compute_sha256_byte_array};
-use garaga::utils::usize_assert_eq;
 use core::integer;
+use core::sha256::{compute_sha256_byte_array, compute_sha256_u32_array};
+use garaga::utils::usize_assert_eq;
 
 // sha256(b"risc0.ReceiptClaim") =
 // 0xcb1fefcd1f2d9a64975cbbbf6e161e2914434b0cbb9960b84df5d717e86b48af

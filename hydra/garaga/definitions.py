@@ -26,6 +26,7 @@ SECP256K1_ID = 2
 SECP256R1_ID = 3
 ED25519_ID = 4
 GRUMPKIN_ID = 5
+JUBJUB_ID = 6
 
 
 class ProofSystem(Enum):
@@ -51,6 +52,7 @@ class CurveID(Enum):
     SECP256R1 = 3
     ED25519 = 4
     GRUMPKIN = 5
+    JUBJUB = 6
 
     @staticmethod
     def from_str(s: str) -> "CurveID":
@@ -447,6 +449,19 @@ CURVES: dict[int, WeierstrassCurve] = {
         fp_generator=5,
         Gx=0x1,
         Gy=0x2CF135E7506A45D632D270D45F1181294833FC48D823F272C,
+        swu_params=None,
+    ),
+    JUBJUB_ID: TwistedEdwardsCurve(
+        cairo_zero_namespace_name="JUBJUB",  # See https://neuromancer.sk/std/other/JubJub
+        id=JUBJUB_ID,
+        p=0x73EDA753299D7D483339D80809A1D80553BDA402FFFE5BFEFFFFFFFF00000001,
+        n=0xE7DB4EA6533AFA906673B0101343B00A6682093CCC81082D0970E5ED6F72CB7,
+        h=8,
+        d_twisted=0x2A9318E74BFA2B48F5FD9207E6BD7FD4292D7F6D37579D2601065FD6D6343EB1,
+        a_twisted=0x73EDA753299D7D483339D80809A1D80553BDA402FFFE5BFEFFFFFFFF00000000,
+        fp_generator=10,
+        Gx=0x11DAFE5D23E1218086A365B99FBF3D3BE72F6AFD7D1F72623E6B071492D1122B,
+        Gy=0x1D523CF1DDAB1A1793132E78C866C0C33E26BA5CC220FED7CC3F870E59D292AA,
         swu_params=None,
     ),
 }

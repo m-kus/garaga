@@ -1,23 +1,22 @@
-use core::sha256::compute_sha256_u32_array;
-use garaga::utils::usize_assert_eq;
 use core::circuit::{
-    RangeCheck96, AddMod, MulMod, u384, u96, CircuitElement, CircuitInput, circuit_add, circuit_sub,
-    circuit_mul, circuit_inverse, EvalCircuitTrait, CircuitOutputsTrait, CircuitModulus,
-    AddInputResultTrait, CircuitInputs,
+    AddInputResultTrait, AddMod, CircuitElement, CircuitInput, CircuitInputs, CircuitModulus,
+    CircuitOutputsTrait, EvalCircuitTrait, MulMod, RangeCheck96, circuit_add, circuit_inverse,
+    circuit_mul, circuit_sub, u384, u96,
 };
-use garaga::core::circuit::AddInputResultTrait2;
-use garaga::definitions::{G1Point, G2Point, u384Serde, BLS_G2_GENERATOR};
-use garaga::basic_field_ops::{u512_mod_bls12_381, is_even_u384};
 use core::num::traits::Zero;
+use core::sha256::compute_sha256_u32_array;
+use garaga::basic_field_ops::{is_even_u384, u512_mod_bls12_381};
+use garaga::circuits::ec::run_ADD_EC_POINT_circuit;
+use garaga::circuits::isogeny::run_BLS12_381_APPLY_ISOGENY_BLS12_381_circuit;
+use garaga::core::circuit::AddInputResultTrait2;
+use garaga::definitions::{BLS_G2_GENERATOR, G1Point, G2Point, u384Serde};
 use garaga::ec_ops::{
-    ec_safe_add, scalar_mul_g1_fixed_small_scalar, MSMHintSmallScalar, DerivePointFromXHint,
-    FunctionFelt, msm_g1_u128,
+    DerivePointFromXHint, FunctionFelt, MSMHintSmallScalar, ec_safe_add, msm_g1_u128,
+    scalar_mul_g1_fixed_small_scalar,
 };
 use garaga::ec_ops_g2;
-use garaga::circuits::isogeny::run_BLS12_381_APPLY_ISOGENY_BLS12_381_circuit;
-use garaga::circuits::ec::run_ADD_EC_POINT_circuit;
-
-use garaga::single_pairing_tower::{miller_loop_bls12_381_tower, final_exp_bls12_381_tower};
+use garaga::single_pairing_tower::{final_exp_bls12_381_tower, miller_loop_bls12_381_tower};
+use garaga::utils::usize_assert_eq;
 
 // Chain: 52db9ba70e0cc0f6eaf7803dd07447a1f5477735fd3f661792ba94600c84e971
 //   Public Key:
@@ -519,13 +518,11 @@ const IBE_H2: [u32; 2] = [0x4942452d, 0x4832];
 // bytes("IBE-H4") (4 + 2 bytes)
 const IBE_H4: [u32; 2] = [0x4942452d, 0x4834];
 const IBE_H3: [u32; 2] = [0x4942452d, 0x4833];
-
 use core::circuit::conversions::{
-    DivRemU96By32, DivRemU96By64, ConstValue, POW64, POW64_TYPED, NZ_POW64_TYPED, POW32,
-    POW32_TYPED, NZ_POW32_TYPED,
+    ConstValue, DivRemU96By32, DivRemU96By64, NZ_POW32_TYPED, NZ_POW64_TYPED, POW32, POW32_TYPED,
+    POW64, POW64_TYPED,
 };
-
-use core::internal::bounded_int::{BoundedInt, bounded_int_div_rem, DivRemHelper};
+use core::internal::bounded_int::{BoundedInt, DivRemHelper, bounded_int_div_rem};
 
 const POW80: felt252 = 0x100000000000000000000;
 const NZ_POW80_TYPED: NonZero<ConstValue<POW80>> = 0x100000000000000000000;
@@ -799,13 +796,13 @@ pub fn hash_to_u256(msg: [u32; 8]) -> u256 {
 
 #[cfg(test)]
 mod tests {
-    use super::{
-        DRAND_QUICKNET_PUBLIC_KEY, hash_to_two_bls_felts, u384, G1Point, MapToCurveHint,
-        map_to_curve, HashToCurveHint, MSMHintSmallScalar, DerivePointFromXHint,
-        hash_to_curve_bls12_381, FunctionFelt, run_BLS12_381_APPLY_ISOGENY_BLS12_381_circuit,
-        CipherText, decrypt_at_round, G2Point,
-    };
     use garaga::ec_ops_g2::G2PointTrait;
+    use super::{
+        CipherText, DRAND_QUICKNET_PUBLIC_KEY, DerivePointFromXHint, FunctionFelt, G1Point, G2Point,
+        HashToCurveHint, MSMHintSmallScalar, MapToCurveHint, decrypt_at_round,
+        hash_to_curve_bls12_381, hash_to_two_bls_felts, map_to_curve,
+        run_BLS12_381_APPLY_ISOGENY_BLS12_381_circuit, u384,
+    };
 
     #[test]
     fn test_drand_quicknet_public_key() {

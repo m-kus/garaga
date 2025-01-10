@@ -1,5 +1,5 @@
-use garaga::definitions::get_min_one;
 use core::circuit::{u384, u96};
+use garaga::definitions::get_min_one;
 
 const STARK_MINUS_1_HALF: u256 =
     180925139433306560684866139154753505281553607665798349986546028067936010240; // (STARK-1)//2
@@ -214,9 +214,9 @@ pub fn scalar_to_epns_with_digits(
 
 #[cfg(test)]
 mod tests {
+    use core::circuit::u384;
     use core::traits::TryInto;
-    use core::circuit::{u384};
-    use super::{scalar_to_epns, neg_3_base_le};
+    use super::{neg_3_base_le, scalar_to_epns};
 
     #[test]
     fn test_scalar_to_epns() {

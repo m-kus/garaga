@@ -1,7 +1,7 @@
-pub use core::poseidon::hades_permutation;
 use core::circuit::{u384, u96};
+pub use core::poseidon::hades_permutation;
 use garaga::definitions::{
-    E12D, u288, G1G2Pair, G1Point, E12DMulQuotient, MillerLoopResultScalingFactor,
+    E12D, E12DMulQuotient, G1G2Pair, G1Point, MillerLoopResultScalingFactor, u288,
 };
 
 #[derive(Copy, Drop)]
