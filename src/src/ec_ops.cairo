@@ -4,10 +4,11 @@ use core::circuit::{
     AddMod, MulMod, u96, CircuitElement, CircuitInput, circuit_add, circuit_sub, circuit_mul,
     circuit_inverse, EvalCircuitResult, EvalCircuitTrait, u384, CircuitOutputsTrait, CircuitModulus,
     AddInputResultTrait, CircuitInputs, CircuitDefinition, CircuitData, CircuitInputAccumulator,
+    U384Serde
 };
 use garaga::definitions::{
     get_a, get_b, get_modulus, get_g, get_min_one, get_b2, get_n, G1Point, G2Point,
-    BLS_X_SEED_SQ_EPNS, BLS_X_SEED_SQ, G1PointZero, THIRD_ROOT_OF_UNITY_BLS12_381_G1, u384Serde,
+    BLS_X_SEED_SQ_EPNS, BLS_X_SEED_SQ, G1PointZero, THIRD_ROOT_OF_UNITY_BLS12_381_G1,
 };
 use core::option::Option;
 use core::panic_with_felt252;
