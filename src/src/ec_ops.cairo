@@ -176,7 +176,7 @@ fn get_DERIVE_POINT_FROM_X_circuit(
 // If z has a square root in Fp, then g*z does not have a square root in Fp*.
 // If z does not have a square root in Fp, then g*z has a square root in Fp*.
 // Note: there is exactly (p-1)//2 square roots in Fp*.
-fn derive_ec_point_from_X(
+pub fn derive_ec_point_from_X(
     mut x: felt252, y_last_attempt: u384, mut g_rhs_sqrt: Span<u384>, curve_index: usize,
 ) -> G1Point {
     let mut attempt: felt252 = 0;
