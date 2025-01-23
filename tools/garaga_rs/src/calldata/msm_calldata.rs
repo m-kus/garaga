@@ -3,10 +3,11 @@ use crate::definitions::{
     BLS12381PrimeField, BN254PrimeField, CurveParamsProvider, FieldElement, GrumpkinPrimeField,
     SECP256K1PrimeField, SECP256R1PrimeField, Stark252PrimeField, X25519PrimeField,
 };
+use crate::io::field_element_to_u384_limbs_compact;
 use crate::{
     ecip::core::{neg_3_base_le, run_ecip},
     io::{
-        element_to_biguint, felt252_to_element, field_element_to_u384_limbs,
+        element_to_biguint, felt252_to_element,
         field_elements_from_big_uints, padd_function_felt,
         parse_g1_points_from_flattened_field_elements_list, scalar_to_limbs,
     },
@@ -207,7 +208,7 @@ where
         F: IsPrimeField,
         FieldElement<F>: ByteConversion,
     {
-        let limbs = field_element_to_u384_limbs(element);
+        let limbs = field_element_to_u384_limbs_compact(element);
         for limb in limbs {
             push(call_data_ref, limb);
         }
