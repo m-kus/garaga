@@ -3,10 +3,10 @@ use garaga::utils::usize_assert_eq;
 use core::circuit::{
     RangeCheck96, AddMod, MulMod, u384, u96, CircuitElement, CircuitInput, circuit_add, circuit_sub,
     circuit_mul, circuit_inverse, EvalCircuitTrait, CircuitOutputsTrait, CircuitModulus,
-    AddInputResultTrait, CircuitInputs,
+    AddInputResultTrait, CircuitInputs, U384Serde,
 };
 use garaga::core::circuit::AddInputResultTrait2;
-use garaga::definitions::{G1Point, G2Point, u384Serde, BLS_G2_GENERATOR};
+use garaga::definitions::{G1Point, G2Point, BLS_G2_GENERATOR};
 use garaga::basic_field_ops::{u512_mod_bls12_381, is_even_u384};
 use core::num::traits::Zero;
 use garaga::ec_ops::{

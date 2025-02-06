@@ -7,6 +7,7 @@ use lambdaworks_math::{
     traits::ByteConversion,
 };
 use num_bigint::BigUint;
+use starknet_types_core::felt::Felt;
 
 pub fn parse_g1_points_from_flattened_field_elements_list<F>(
     values: &[FieldElement<F>],
@@ -164,6 +165,18 @@ where
     FieldElement<F>: ByteConversion,
 {
     byte_slice_split::<4, 96>(&x.to_bytes_be())
+}
+
+pub fn field_element_to_u384_limbs_compact<F>(x: &FieldElement<F>) -> [BigUint; 2]
+where
+    F: IsPrimeField,
+    FieldElement<F>: ByteConversion,
+{
+    let bytes = x.to_bytes_be();
+    let index = bytes.len() - 24;
+    let limb0 = BigUint::from_bytes_be(&bytes[index..]);
+    let limb1 = BigUint::from_bytes_be(&bytes[..index]);
+    [limb0, limb1]
 }
 
 pub fn scalar_to_limbs(x: &BigUint) -> [u128; 2] {
